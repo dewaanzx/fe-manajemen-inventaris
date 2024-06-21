@@ -1,13 +1,13 @@
 <template>
   <nav
-    class="py-5 px-5 lg:px-[140px] lg:py-[10px] h-[80px] bg-[#2B9FDC] xl:w-[100%]"
+    class="py-5 px-5 lg:px-[140px] lg:py-[10px] h-[80px] bg-[#D3E86A] xl:w-[100%]"
   >
     <div
       class="flex justify-between h-[60px] items-center"
       v-for="user in userStore.users"
     >
       <RouterLink :to="'/users'"
-        ><img src="../assets/logo.svg " class="h-[50px]" alt=""
+        ><img src="../assets/logo.png " class="h-[50px]" alt=""
       /></RouterLink>
 
       <!-- toggle responsive -->
@@ -23,7 +23,7 @@
           <li class="flex justify-center items-center">
             <button
               href=""
-              class="flex justify-center flex-col items-center text-base gap-1 w-11 h-11 bg-[#2B9FDC] hover:bg-sky-600 rounded-full"
+              class="flex justify-center flex-col items-center text-base gap-1 w-11 h-11 bg-[#D3E86A] hover:bg-sky-600 rounded-full"
               @click="$router.push('/users/notifikasi')"
             >
               <img
@@ -69,7 +69,7 @@
     </div>
     <div
       v-show="open"
-      class="fixed bg-[#fff] flex flex-col gap-2 rounded-md md:right-[10%] right-[10%] animate-fade-up z-50 p-5 shadow-md"
+      class="fixed bg-[#25282B] flex flex-col gap-2 rounded-md md:right-[10%] right-[10%] animate-fade-up z-50 p-5 shadow-md"
       v-for="user in userStore.users"
     >
       <div class="flex flex-row justify-start items-center gap-3">
@@ -79,13 +79,13 @@
           class="h-[30px] w-[30px] rounded-full"
           alt=""
         />
-        <span class="text-[12px] font-semibold">
+        <span class="text-[12px] font-semibold text-white">
           {{ user.name }}
         </span>
       </div>
-      <div class="h-[1px] bg-[#373535]"></div>
+      <div class="h-[1px] bg-[#fff]"></div>
       <div class="flex justify-start">
-        <button @click="goToProfile" class=" ">Profil</button>
+        <button @click="goToProfile" class="text-white">Data Diri</button>
       </div>
       <div>
         <button class="text-red-700" @click="authStore.logout()">Keluar</button>
