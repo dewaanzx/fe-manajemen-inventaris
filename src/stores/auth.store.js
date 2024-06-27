@@ -26,7 +26,7 @@ export const useAuthStore = defineStore({
         }else if (user.data.role == "SPV Cars"){
           router.push("/spv-mobil")
         }else if (user.data.role == "Admin"){
-          router.push("/admin/pinjaman-mobil/Semua")
+          router.push("/admin/menu/Semua")
         }else if (user.data.role == "Satpam"){
           router.push("/satpam")
         }

@@ -6,7 +6,7 @@
       class="flex justify-between h-[60px] items-center"
       v-for="user in userStore.users"
     >
-      <RouterLink :to="'/admin/pinjaman-mobil'"
+      <RouterLink :to="'/admin/menu/Semua'"
         ><img src="../assets/logo.png " class="h-[50px]" alt=""
       /></RouterLink>
 
@@ -120,7 +120,7 @@
           </div>
           <div v-show="openmenu" class="flex flex-col gap-1">
             <button
-              @click="$router.push('/admin/pinjaman-mobil/Semua')"
+              @click="$router.push('/admin/menu/Semua')"
               class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
             >
               <p>Pengambilan</p>
@@ -222,13 +222,13 @@
         <!-- Main Main Menu -->
         <div v-show="openmenu" class="flex flex-col gap-1">
           <button
-            @click="$router.push('/admin/pinjaman-mobil')"
+            @click="$router.push('/admin/menu/Semua')"
             class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
           >
             <p>Pinjaman Mobil</p>
           </button>
           <button
-            @click="$router.push('/admin/pinjaman-mobil')"
+            @click="$router.push('/admin/menu/Semua')"
             class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
           >
             <p>Pinjaman Ruangan</p>

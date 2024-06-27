@@ -6,7 +6,7 @@
       >
         <li class="inline-flex items-center">
           <button
-            @click="$router.push('/admin/pinjaman-mobil/Semua')"
+            @click="$router.push('/admin/menu/Semua')"
             class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
           >
             Home
@@ -223,7 +223,7 @@ export default {
       let car_transaction = await this.carTransactionStore.add(this.formData);
 
       if (car_transaction) {
-        this.$router.push("/admin/pinjaman-mobil/Semua");
+        this.$router.push("/admin/menu/Semua");
       }
     },
   },

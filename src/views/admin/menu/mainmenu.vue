@@ -58,7 +58,7 @@
         </div>
 
         <button
-          @click="$router.push('/admin/pinjaman-mobil/tambah')"
+          @click="$router.push('/admin/menu/tambah')"
           class="bg-[#E26B00] hover:bg-orange-600 text-white px-3 py-2 flex flex-row items-center rounded-[12px] text-[12px] md:text-[16px] gap-1 my-2 shadow-sm"
         >
           <img
@@ -74,7 +74,7 @@
       <div>
         <!-- Bagian button -->
         <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-          <RouterLink :to="'/admin/pinjaman-mobil/Semua'">
+          <RouterLink :to="'/admin/menu/Semua'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Semua')"
@@ -87,7 +87,7 @@
               Semua
             </button>
           </RouterLink>
-          <RouterLink :to="'/admin/pinjaman-mobil/Dicek'">
+          <RouterLink :to="'/admin/menu/Dicek'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Dicek')"
@@ -100,7 +100,7 @@
               Dicek
             </button>
           </RouterLink>
-          <RouterLink :to="'/admin/pinjaman-mobil/Ditolak'">
+          <RouterLink :to="'/admin/menu/Ditolak'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Ditolak')"
@@ -113,7 +113,7 @@
               Ditolak
             </button>
           </RouterLink>
-          <RouterLink :to="'/admin/pinjaman-mobil/Diterima'">
+          <RouterLink :to="'/admin/menu/Diterima'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Diterima')"
@@ -126,7 +126,7 @@
               Diterima
             </button>
           </RouterLink>
-          <RouterLink :to="'/admin/pinjaman-mobil/Digunakan'">
+          <RouterLink :to="'/admin/menu/Digunakan'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Digunakan')"
@@ -139,7 +139,7 @@
               Digunakan
             </button>
           </RouterLink>
-          <RouterLink :to="'/admin/pinjaman-mobil/Selesai'">
+          <RouterLink :to="'/admin/menu/Selesai'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Selesai')"
@@ -173,8 +173,8 @@
               <td
                 class="flex flex-col justify-start text-[12px] gap-1 md:gap-2 py-2 md:py-5"
               >
-                <button @click="$router.push('/admin/pinjaman-mobil/edit/' + car_transaction.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
-                <button @click="$router.push('/admin/pinjaman-mobil/detail/' + car_transaction.id)" class="bg-gray-400 text-white rounded-md">
+                <button @click="$router.push('/admin/menu/edit/' + car_transaction.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
+                <button @click="$router.push('/admin/menu/detail/' + car_transaction.id)" class="bg-gray-400 text-white rounded-md">
                   Detail
                 </button>
                 <button @click="confirmDelete(car_transaction.id)" class="bg-red-400 text-white rounded-md">Delete</button>

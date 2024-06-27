@@ -3,10 +3,11 @@ import NavbarAdmin from "../layouts/NavbarAdmin.vue";
 import SidebarAdmin from "../layouts/Sidebar.vue";
 import AuthMiddleware from "@/middleware/auth.middleware.js";
 
-import ViewPinjamanMobil from "../views/admin/pinjaman-mobil/pinjamanmobil.vue";
-import TambahPinjamMobil from "../views/admin/pinjaman-mobil/tambahpinjaman.vue";
-import EditPinjamanMobil from "../views/admin/pinjaman-mobil/editpinjaman.vue";
-import DetailPinjamanMobil from "../views/admin/pinjaman-mobil/detailpinjaman.vue";
+import ViewMenu from "../views/admin/menu/mainmenu.vue";
+import TambahBarang from "../views/admin/menu/tambahbarang.vue";
+import EditBarang from "../views/admin/menu/editbarang.vue";
+import DetailBarang from "../views/admin/menu/detailbarang.vue";
+
 import ViewPinjamanRuangan from "../views/admin/pinjam-ruangan/pinjamanruangan.vue";
 import TambahPinjamanRuangan from "../views/admin/pinjam-ruangan/tambahpinjaman.vue";
 import EditPinjamanRuangan from "../views/admin/pinjam-ruangan/editpinjaman.vue";
@@ -29,41 +30,41 @@ import EditDivisi from "../views/admin/master-divisi/editdivisi.vue";
 
 export default [
   {
-    path: "/admin/pinjaman-mobil/:status",
-    name: "Admin-pinjaman-mobil",
-    component: ViewPinjamanMobil,
+    path: "/admin/menu/:status",
+    name: "Admin-main-menu",
+    component: ViewMenu,
     meta: {
-      title: "Admin",
+      title: "Menu",
       layout: NavbarAdmin,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/admin/pinjaman-mobil/tambah",
-    name: "Admin-tambah-pinjam-mobil",
-    component: TambahPinjamMobil,
+    path: "/admin/menu/tambah",
+    name: "Admin-tambah-barang",
+    component: TambahBarang,
     meta: {
-      title: "Admin",
+      title: "Tambah Barang",
       layout: NavbarAdmin,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/admin/pinjaman-mobil/edit/:id",
-    name: "Admin-edit-pinjaman-mobil",
-    component: EditPinjamanMobil,
+    path: "/admin/menu/edit/:id",
+    name: "Admin-edit-menu",
+    component: EditBarang,
     meta: {
-      title: "Admin",
+      title: "Edit Barang",
       layout: NavbarAdmin,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/admin/pinjaman-mobil/detail/:id",
-    name: "Admin-detail-pinjam-mobil",
-    component: DetailPinjamanMobil,
+    path: "/admin/menu/detail/:id",
+    name: "Admin-detail-barang",
+    component: DetailBarang,
     meta: {
-      title: "Admin",
+      title: "Detail Barang",
       layout: NavbarAdmin,
       middleware: [AuthMiddleware],
     },

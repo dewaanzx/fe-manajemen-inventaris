@@ -137,7 +137,7 @@ export default {
   methods: {
     checkPermission(role) {
       if (role == 'Admin'){
-        this.$router.push("/admin/pinjaman-mobil/Semua")
+        this.$router.push("/admin/menu/Semua")
       }
       else if (role == 'SPV Cars'){
         this.$router.push("/spv-mobil")
