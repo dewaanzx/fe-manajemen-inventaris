@@ -60,15 +60,15 @@
           <P
             class="font-medium text-[16px] lg:text-[20px]"
             style="line-height: 1.2em"
-            >Irfan Jauhari</P
+            >haidar</P
           >
           <p class="text-[12px] lg:text-[13px] text-gray-500">
-            Digital Marketing
+            IP
           </p>
           <p class="text-[12px] lg:text-[13px] text-gray-500">
-            Irfanjauh@email.com
+            dewabandis07@gmail.com
           </p>
-          <p class="text-[12px] lg:text-[13px] text-gray-500">08989898</p>
+          <p class="text-[12px] lg:text-[13px] text-gray-500">089123456789</p>
         </div>
       </Div>
 

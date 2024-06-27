@@ -1,18 +1,19 @@
-import HomeView from "@/views/home/index.vue";
-import UserView from "@/views/user/index.vue";
-import UserCreateView from "@/views/user/create.vue";
-import UserUpdateView from "@/views/user/update.vue";
-import UsersPinjamin from "../views/users/index.vue";
-import UsersPengajuanMobil from "../views/users/PinjamMobil/pengajuanmobil.vue";
-import UsersDetailPengajuanMobil from "../views/users/PinjamMobil/detailpengajuanmobil.vue";
-import UsersRiwayatMobil from "../views/users/PinjamMobil/riwayatpinjammobil.vue";
-import UsersRiwayatPinjamMobilDetail from "../views/users/PinjamMobil/riwayatpinjammobilDetail.vue";
+import UsersTelkom from "../views/users/index.vue";
+
+import UsersAmbilMaterial from "../views/users/AmbilMaterial/ambilmaterial.vue";
+
+import UsersPengajuanMaterial from "../views/users/AmbilMaterial/pengajuanmaterial.vue";
+import UsersDetailPengajuanMaterial from "../views/users/AmbilMaterial/detailpengajuanmaterial.vue";
+import UsersRiwayatMaterial from "../views/users/AmbilMaterial/riwayatambilmaterial.vue";
+import UsersRiwayatAmbilMaterialDetail from "../views/users/AmbilMaterial/riwayatambilmaterialDetail.vue";
+
 import UsersProfile from "../views/users/Profile/profile.vue";
 import UsersEditProfile from "../views/users/Profile/EditProfile.vue";
 import UsersGantiPassword from "../views/users/Profile/GantiPassword.vue";
 import UsersInformasi from "../views/users/Profile/Informasi.vue";
 import UsersNotifikasi from "../views/users/notifikasi.vue";
-import UsersAmbilMobil from "../views/users/PinjamMobil/ambilmobil.vue";
+
+
 import UsersCalendar from "../views/users/PinjamRuangan/kalender.vue";
 import UsersPengajuanRuangan from "../views/users/PinjamRuangan/pengajaun.vue";
 import UsersPengajuanRuanganDetail from "../views/users/PinjamRuangan/detailpengajuan.vue";
@@ -20,99 +21,59 @@ import UsersRiwayatPinjamRuangan from "../views/users/PinjamRuangan/riwayatpinja
 import UsersRiwayatPinjamRuanganDetail from "../views/users/PinjamRuangan/riwayatpinjamruanganDetail.vue";
 
 import ExampleLayout from "@/layouts/ExampleLayout.vue";
-import NavbarPinjamin from "../layouts/Navbar.vue";
+import NavbarTelkom from "../layouts/Navbar.vue";
 
 // middleware
 import AuthMiddleware from "@/middleware/auth.middleware.js";
 
 export default [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
-    meta: {
-      title: "Home",
-      layout: ExampleLayout,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/user",
-    name: "user",
-    component: UserView,
-    meta: {
-      title: "User",
-      layout: ExampleLayout,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/user/create",
-    name: "user.create",
-    component: UserCreateView,
-    meta: {
-      title: "User Create",
-      layout: ExampleLayout,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/user/update",
-    name: "user.update",
-    component: UserUpdateView,
-    meta: {
-      title: "User Update",
-      layout: ExampleLayout,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
     path: "/users",
     name: "users",
-    component: UsersPinjamin,
+    component: UsersTelkom,
     meta: {
       title: "Main Menu",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/users/pengajuanmobil",
-    name: "users.pengajuanmobil",
-    component: UsersPengajuanMobil,
+    path: "/users/pengajuanmaterial",
+    name: "users.pengajuanmaterial",
+    component: UsersPengajuanMaterial,
     meta: {
-      title: "User Pengajuan Mobil",
-      layout: NavbarPinjamin,
+      title: "User Pengajuan Material",
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/users/detail-pengajuan-mobil",
-    name: "users.detailpengajuanmobil",
-    component: UsersDetailPengajuanMobil,
+    path: "/users/detail-pengajuan-material",
+    name: "users.detailpengajuanmaterial",
+    component: UsersDetailPengajuanMaterial,
     meta: {
-      title: "Detail Pengajuan Mobil",
-      layout: NavbarPinjamin,
+      title: "Detail Pengajuan Material",
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/users/riwayat-pinjam-mobil/:status",
-    name: "users.riwayatpinjammobil",
-    component: UsersRiwayatMobil,
+    path: "/users/riwayat-ambil-material/:status",
+    name: "users.riwayatambilmaterial",
+    component: UsersRiwayatMaterial,
     meta: {
-      title: "Riwayat Pinjam  Mobil",
-      layout: NavbarPinjamin,
+      title: "Riwayat Ambil Material",
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/users/riwayat-pinjam-mobil-detail/:id",
-    name: "users.detail-pinjam-mobil",
-    component: UsersRiwayatPinjamMobilDetail,
+    path: "/users/riwayat-pinjam-material-detail/:id",
+    name: "users.detail-pinjam-material",
+    component: UsersRiwayatAmbilMaterialDetail,
     meta: {
-      title: "Detail Pinjam Mobil",
-      layout: NavbarPinjamin,
+      title: "Detail Pinjam Material",
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -122,7 +83,7 @@ export default [
     component: UsersProfile,
     meta: {
       title: "Profile",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -132,7 +93,7 @@ export default [
     component: UsersEditProfile,
     meta: {
       title: "Edit Profil",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -142,7 +103,7 @@ export default [
     component: UsersGantiPassword,
     meta: {
       title: "Ganti Password",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -152,7 +113,7 @@ export default [
     component: UsersInformasi,
     meta: {
       title: "Informasi",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -162,17 +123,17 @@ export default [
     component: UsersNotifikasi,
     meta: {
       title: "Notifikasi",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
   {
-    path: "/users/ambil-mobil/:id",
-    name: "users.ambil.mobil",
-    component: UsersAmbilMobil,
+    path: "/users/ambil-material/:id",
+    name: "users.ambil.material",
+    component: UsersAmbilMaterial,
     meta: {
-      title: "Ambil Mobil",
-      layout: NavbarPinjamin,
+      title: "Ambil Material",
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -182,7 +143,7 @@ export default [
     component: UsersCalendar,
     meta: {
       title: "Pinjam Ruang",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -192,7 +153,7 @@ export default [
     component: UsersPengajuanRuangan,
     meta: {
       title: "Pengajuan Ruangan",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -202,7 +163,7 @@ export default [
     component: UsersPengajuanRuanganDetail,
     meta: {
       title: "Detail Pengajuan Ruangan",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -212,7 +173,7 @@ export default [
     component: UsersRiwayatPinjamRuangan,
     meta: {
       title: "Riwayat Pinjam Ruangan",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },
@@ -222,7 +183,7 @@ export default [
     component: UsersRiwayatPinjamRuanganDetail,
     meta: {
       title: "Riwayat Pinjam Ruangan",
-      layout: NavbarPinjamin,
+      layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
   },

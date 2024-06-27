@@ -214,6 +214,71 @@
           Selanjutnya
         </button>
       </div>
+	      <!-- Report -->
+		  <div
+      class="flex flex-col border gap-5 md:gap-9 rounded-[18px] md:rounded-[32px] p-10 md:px-20 md:py-12 shadow-sm"
+    >
+      <!-- toogle -->
+      <div class="p-2 md:p-4 text-[14px] md:text-[24px] mx-auto">
+        <button class="p-2 md:px-6 rounded-lg">Harian</button>
+        <button class="p-2 md:px-6 rounded-lg">Mingguan</button>
+        <button class="p-2 md:px-6 rounded-lg">Bulanan</button>
+      </div>
+      <div class="md:py-7 flex flex-col gap-4 md:flex-row justify-between">
+        <!-- report material -->
+        <div
+          class="bg-[#C1E9FF] px-[26px] py-[14px] md:px-[36px] md:py-[24px] flex flex-col gap-5 md:gap-6 rounded-xl md:rounded-[20px]"
+        >
+          <Span
+            class="text-[12px] md:text-[28px] mx-auto"
+            style="line-height: 1.2em"
+            >Mobil</Span
+          >
+          <div class="flex flex-row justify-between md:gap-9">
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">10</span
+              ><label class="text-[11px] md:text-[16px]" for="">Pinjaman</label>
+            </div>
+            <div class="bg-[#D9D9D9] w-1"></div>
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">8</span
+              ><label class="text-[11px] md:text-[16px]" for="">Diterima</label>
+            </div>
+            <div class="bg-[#D9D9D9] w-1"></div>
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">2</span
+              ><label class="text-[11px] md:text-[16px]" for="">Ditolak</label>
+            </div>
+          </div>
+        </div>
+        <!-- report ruangan -->
+        <div
+          class="bg-[#FDEDCA] px-[26px] py-[14px] md:px-[36px] md:py-[24px] flex flex-col gap-5 md:gap-6 rounded-xl md:rounded-[20px]"
+        >
+          <Span
+            class="text-[12px] md:text-[28px] mx-auto"
+            style="line-height: 1.2em"
+            >Mobil</Span
+          >
+          <div class="flex flex-row justify-between md:gap-9">
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">10</span
+              ><label class="text-[11px] md:text-[16px]" for="">Pinjaman</label>
+            </div>
+            <div class="bg-[#D9D9D9] w-1"></div>
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">8</span
+              ><label class="text-[11px] md:text-[16px]" for="">Diterima</label>
+            </div>
+            <div class="bg-[#D9D9D9] w-1"></div>
+            <div class="flex flex-col justify-center items-center">
+              <span class="text-[16px] md:text-[25px]">2</span
+              ><label class="text-[11px] md:text-[16px]" for="">Ditolak</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </form>
   </main>
 </template>

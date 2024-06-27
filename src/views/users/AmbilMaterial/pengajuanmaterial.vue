@@ -263,7 +263,7 @@ export default {
       //   deskripsi: this.deskripsi,
       // });
 
-      this.$router.push("/users/detail-pengajuan-mobil");
+      this.$router.push("/users/detail-pengajuan-material");
     },
   },
 };
