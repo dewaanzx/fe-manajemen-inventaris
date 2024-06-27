@@ -22,7 +22,7 @@
             src="../../../assets/plus.svg"
             alt=""
           />
-          Tambah Ruangan
+          Tambah Pegawai
         </button>
       </div>
     </article>
@@ -32,8 +32,8 @@
           <table class="w-full my-3">
             <tr class="text-[14px] md:text-[16px] font-semibold border-b px-3">
               <th class="font-medium text-left py-4 pr-4 pl-2">Nama</th>
-              <th class="font-medium text-left py-4 pr-4 pl-2">Capacity</th>
-              <th class="font-medium text-left py-4 pr-4 pl-2">Status</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Email</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Nomor</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Aksi</th>
             </tr>
             <tr v-for="room in paginatedRooms" class="text-[12px] md:text-[14px] border-b">

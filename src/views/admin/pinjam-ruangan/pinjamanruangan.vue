@@ -65,7 +65,7 @@
             src="../../../assets/plus.svg"
             alt=""
           />
-          Tambah Pinjaman
+          Tambah Pegawai
         </button>
       </div>
     </article>

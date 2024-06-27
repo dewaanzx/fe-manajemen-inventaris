@@ -6,7 +6,7 @@
 	      <div class="">
 	        <div class="grid md:flex md:flex-row md:justify-around gap-2">
 	          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-	            >Informasi Mobil</span
+	            >Informasi Barang</span
 	          >
 	          <div class="grid gap-2 md:w-[80%]">
 	            <div class="flex flex-col text-[12px] gap-1">

@@ -1,7 +1,43 @@
 <template>
   <SECtion class="w-[80%] mx-auto flex flex-col gap-8">
     <!-- bagian breadcrum -->
-    <header class="bg-red-200">Ini Breadcumb</header>
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol
+        class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+      >
+        <li class="inline-flex items-center">
+          <button
+            @click="$router.push('/users')"
+            class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
+          >
+            Home
+          </button>
+        </li>
+		<li>
+          <div class="flex items-center">
+            <svg
+              class="rtl:rotate-180 w-3 h-3 text-black mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span
+              class="ms-1 text-sm md:text-lg text-black md:ms-2 dark:text-black"
+              >Notifikasi</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
     <!-- ini bagian notifikasi -->
     <article class="flex flex-col gap-3">
       <div v-for="notification in notificationStore.notifications">

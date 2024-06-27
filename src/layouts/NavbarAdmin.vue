@@ -1,13 +1,13 @@
 <template>
   <nav
-    class="py-5 px-5 lg:px-[140px] lg:py-[10px] h-[80px] bg-[#2B9FDC] xl:w-[100%]"
+    class="py-5 px-5 lg:px-[140px] lg:py-[10px] h-[80px] bg-[#D3E86A] xl:w-[100%]"
   >
     <div
       class="flex justify-between h-[60px] items-center"
       v-for="user in userStore.users"
     >
       <RouterLink :to="'/admin/pinjaman-mobil'"
-        ><img src="../assets/logo.svg " class="h-[50px]" alt=""
+        ><img src="../assets/logo.png " class="h-[50px]" alt=""
       /></RouterLink>
 
       <!-- toggle responsive -->
@@ -23,7 +23,7 @@
           <li class="flex justify-center items-center">
             <button
               href=""
-              class="flex justify-center flex-col items-center text-base gap-1 w-11 h-11 bg-[#2B9FDC] hover:bg-sky-600 rounded-full"
+              class="flex justify-center flex-col items-center text-base gap-1 w-11 h-11 bg-[#D3E86A] hover:bg-sky-600 rounded-full"
             >
               <img
                 src="../assets/bell.svg"
@@ -123,25 +123,13 @@
               @click="$router.push('/admin/pinjaman-mobil/Semua')"
               class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
             >
-              <p>Pinjaman Mobil</p>
-            </button>
-            <button
-              @click="$router.push('/admin/pinjaman-ruangan/Semua')"
-              class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
-            >
-              <p>Pinjaman Ruangan</p>
+              <p>Pengambilan</p>
             </button>
             <button
               @click="$router.push('/admin/konfirmasi-mobil')"
               class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
             >
-              <p>Konfirmasi Mobil</p>
-            </button>
-            <button
-              @click="$router.push('/admin/konfirmasi-ruangan')"
-              class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
-            >
-              <p>Konfirmasi Ruangan</p>
+              <p>Konfirmasi</p>
             </button>
           </div>
           <!-- akhir main menu dekstop -->
@@ -166,25 +154,19 @@
               @click="$router.push('/admin/master-mobil')"
               class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
             >
-              <p>Mobil</p>
+              <p>Barang</p>
             </button>
             <button
               @click="$router.push('/admin/master-ruangan')"
               class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
             >
-              <p>Ruangan</p>
+              <p>Pegawai</p>
             </button>
             <button
               @click="$router.push('/admin/master-divisi')"
               class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
             >
               <p>Divisi</p>
-            </button>
-            <button
-              @click="$router.push('/admin/master-sopir')"
-              class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
-            >
-              <p>Sopir</p>
             </button>
           </div>
           <!-- akhir master data dekstop -->

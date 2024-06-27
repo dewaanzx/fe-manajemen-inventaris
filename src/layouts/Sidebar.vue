@@ -57,22 +57,12 @@
         <button
           class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
         >
-          <p>Pinjaman Mobil</p>
-        </button>
-        <button
-          class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
-        >
-          <p>Pinjaman Ruangan</p>
+          <p>Pengambilan</p>
         </button>
         <button
           class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
         >
           <p>Konfirmasi Mobil</p>
-        </button>
-        <button
-          class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
-        >
-          <p>Konfirmasi Ruangan</p>
         </button>
       </div>
 

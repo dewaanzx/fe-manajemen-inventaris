@@ -52,7 +52,7 @@
             type="text"
             name=""
             class="border px-3 inline-block rounded-[12px] text-[12px] md:text-[16px] h-[40px]"
-            placeholder="Cari Pinjaman"
+            placeholder="Cari Barang"
             id=""
           />
         </div>
@@ -66,7 +66,7 @@
             src="../../../assets/plus.svg"
             alt=""
           />
-          Tambah Pinjaman
+          Tambah Barang
         </button>
       </div>
     </article>

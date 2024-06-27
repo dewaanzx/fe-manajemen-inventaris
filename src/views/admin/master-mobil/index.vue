@@ -8,7 +8,7 @@
             type="text"
             name=""
             class="border px-3 inline-block rounded-[12px] text-[12px] md:text-[16px] h-[40px]"
-            placeholder="Cari Mobil"
+            placeholder="Cari Barang"
             id=""
           />
         </div>
@@ -22,7 +22,7 @@
             src="../../../assets/plus.svg"
             alt=""
           />
-          Tambah Mobil
+          Tambah Barang
         </button>
       </div>
     </article>
@@ -31,8 +31,8 @@
         <div class="w-full overflow-auto touch-auto ...">
           <table class="w-full my-3">
             <tr class="text-[14px] md:text-[16px] font-semibold border-b px-3">
-              <th class="font-medium text-left py-4 pr-4 pl-2">Nama</th>
-              <th class="font-medium text-left py-4 pr-4 pl-2">Nomor Polisi</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Nama Barang</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Ukuran</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Status</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Aksi</th>
             </tr>

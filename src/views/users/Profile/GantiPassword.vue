@@ -1,53 +1,113 @@
 <template>
-  <section class="w-[80%] mx-auto flex flex-col gap-8">
+  <section class="w-[80%] mx-auto flex flex-col">
     <!-- bagian breadcrum -->
-    <header class="bg-red-200">Ini breadcrumb</header>
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol
+        class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+      >
+        <li class="inline-flex items-center">
+          <button
+            @click="$router.push('/users')"
+            class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
+          >
+            Home
+          </button>
+        </li>
+        <li>
+			<div class="flex items-center">
+            <svg
+              class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <button
+              @click="$router.push('/users/profile')"
+              class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
+            >
+              Profile
+            </button>
+          </div>
+        </li>
+		<li>
+          <div class="flex items-center">
+            <svg
+              class="rtl:rotate-180 w-3 h-3 text-black mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span
+              class="ms-1 text-sm md:text-lg text-black md:ms-2 dark:text-black"
+              >Ganti Password</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
 
     <!-- bagian form edit data -->
-    <article
-      class="border border-[#D9D9D9] rounded-lg md:rounded-[36px] p-4 md:p-9"
-    >
-      <form action="" @submit.prevent="update">
-        <div
-          class="flex flex-col md:flex-row justify-start text-[12px] md:text-[16px] gap-4 md:gap-20"
-        >
-          <Span class="bg-blue-200 w-full md:w-[30%]"> Ganti password</Span>
-          <div class="bg-blue-200 grid w-full gap-2 md:gap-4">
-            <div class="flex flex-col gap-2">
-              <label for="">Password Lama</label>
-              <input
-                type="Password"
-                name=""
-                id=""
-                class="border border-[#D9D9D9] rounded-md md:rounded-[16px] md:px-5 md:py-3 p-1"
-                v-model="formData.oldpassword"
-              />
-            </div>
-            <div class="flex flex-col gap-2">
-              <label for="">Password Baru</label>
-              <input
-                type="Password"
-                name=""
-                id=""
-                class="border border-[#D9D9D9] rounded-md md:rounded-[16px] md:px-5 md:py-3 p-1"
-                v-model="formData.newpassword"
-              />
-            </div>
+    <div class="flex justify-center items-center min-h-screen">
+  <article class="border border-[#D9D9D9] rounded-lg md:rounded-[36px] p-4 md:p-9 w-full max-w-2xl">
+    <form action="" @submit.prevent="update" class="flex flex-col items-center">
+      <span class="bg-blue-200 w-full text-center mb-4 p-2 rounded-md md:rounded-[16px]">Ganti Password</span>
+      <div class="w-full max-w-md">
+        <div class="grid w-full gap-4 md:gap-6">
+          <div class="flex flex-col gap-2">
+            <label for="oldPassword">Password Lama</label>
+            <input
+              type="password"
+              id="oldPassword"
+              class="border border-[#D9D9D9] rounded-md md:rounded-[16px] md:px-5 md:py-3 p-2 w-full"
+              v-model="formData.oldpassword"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="newPassword">Password Baru</label>
+            <input
+              type="password"
+              id="newPassword"
+              class="border border-[#D9D9D9] rounded-md md:rounded-[16px] md:px-5 md:py-3 p-2 w-full"
+              v-model="formData.newpassword"
+            />
           </div>
         </div>
-        <div class="mt-4 flex gap-4 justify-end">
-          <Button
-            class="bg-red-500 py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700"
-            @click="$router.push('/users/profile')"
-            >Batal</Button
-          >
-          <Button
-            class="bg-[#E26B00] py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-orange-600"
-            >Simpan</Button
-          >
-        </div>
-      </form>
-    </article>
+      </div>
+      <div class="mt-6 flex gap-4 justify-center w-full">
+        <button
+          class="bg-red-500 py-2 px-4 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700"
+          @click="$router.push('/users/profile')"
+        >
+          Batal
+        </button>
+        <button
+          type="submit"
+          class="bg-[#E26B00] py-2 px-4 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-orange-600"
+        >
+          Simpan
+        </button>
+      </div>
+    </form>
+  </article>
+</div>
   </section>
 </template>
 <script>

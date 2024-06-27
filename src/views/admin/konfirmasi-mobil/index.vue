@@ -11,8 +11,7 @@
             style="line-height: 1.2em"
             >{{ car_transaction.destination }}
           </Span>
-          <Span
-            class="flex flex-row items-center text-[14px] md:text-[18px] gap-1"
+          <Span class="flex flex-row items-center text-[14px] md:text-[18px] gap-1"
           >
             <img
               src="../../../assets/calender.png "
@@ -45,7 +44,7 @@
       <!-- tombol ambil -->
       <div class="h-[5vmin] flex flex-row justify-between items-center">
         <span class="text-[11px] md:text-[12px]" style="line-height: 1.2em"
-          >Pengguna mengirimkan permintaan pinjaman, ayo konfirmasi</span
+          >Pegawai telah mengambil barang, ayo konfirmasi</span
         >
         <button
           @click="$router.push('/admin/konfirmasi-mobil/konfirmasi/' + car_transaction.id)"

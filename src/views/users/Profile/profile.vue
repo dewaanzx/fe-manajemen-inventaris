@@ -2,9 +2,43 @@
   <!-- bagian main halaman -->
   <div class="w-[80%] mx-auto flex flex-col gap-8">
     <!-- section breadcrumb -->
-    <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-      ini bagian breadcumb
-    </div>
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol
+        class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+      >
+        <li class="inline-flex items-center">
+          <button
+            @click="$router.push('/users')"
+            class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
+          >
+            Home
+          </button>
+        </li>
+		<li>
+          <div class="flex items-center">
+            <svg
+              class="rtl:rotate-180 w-3 h-3 text-black mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span
+              class="ms-1 text-sm md:text-lg text-black md:ms-2 dark:text-black"
+              >Profile</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
     <!-- section profile & setting profile -->
     <div class="flex flex-col md:flex-row md:gap-8 gap-8 justify-center">
       <Div
@@ -69,6 +103,7 @@
         <!-- informasi -->
         <button
           class="bg-[#2B9FDC] text-[12px] hover:bg-sky-600 md:text-[16px] md:p-2 text-white justify-start w-[100%] flex flex-row p-1 gap-2 rounded-md"
+		  @click="$router.push('/users/informasi')"
         >
           <img
             src="../../../assets/informasi.svg"

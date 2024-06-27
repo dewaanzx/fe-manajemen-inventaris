@@ -1,5 +1,42 @@
 <template>
   <!-- Breadcrumb -->
+  <nav class="flex" aria-label="Breadcrumb">
+      <ol
+        class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+      >
+        <li class="inline-flex items-center">
+          <button
+            @click="$router.push('/admin/pinjaman-mobil/Semua')"
+            class="inline-flex items-center text-sm md:text-lg text-black hover:text-blue-500 dark:text-black dark:hover:text-blue-500"
+          >
+            Home
+          </button>
+        </li>
+		<li>
+          <div class="flex items-center">
+            <svg
+              class="rtl:rotate-180 w-3 h-3 text-black mx-1"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span
+              class="ms-1 text-sm md:text-lg text-black md:ms-2 dark:text-black"
+              >Ambil Barang</span
+            >
+          </div>
+        </li>
+      </ol>
+    </nav>
 
   <section class="mt-4">
     <form
@@ -9,12 +46,12 @@
       <!-- form pinjaman -->
       <div class="grid md:flex md:flex-row md:justify-start gap-2">
         <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-          >Peminjam</span
+          >Pengambil</span
         >
         <div class="grid grid-rows-1 gap-2 w-[100%] md:w-[80%]">
           <div class="grid grid-cols-3 md:grid-cols-4 gap-5">
             <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Peminjam</label>
+              <label for="" class="text-[14px] md:text-[16px]">Pengambil</label>
               <select
                 required
                 v-model="formData.user_id"
@@ -30,17 +67,17 @@
       <div class="">
         <div class="grid md:flex md:flex-row md:justify-around gap-2">
           <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-            >Pinjaman</span
+            >Barang</span
           >
           <div class="grid gap-2 md:w-[80%]">
             <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Tujuan</label>
+              <label for="" class="text-[14px] md:text-[16px]">Barang</label>
               <input
                 class="rounded-lg w-[100%] text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
                 type="text"
                 required
                 v-model="formData.destination"
-                placeholder="Masukkan Tujuan Anda"
+                placeholder="Masukkan Barang Anda"
               />
             </div>
             <div class="flex flex-col text-[12px] gap-1">
@@ -86,53 +123,6 @@
         </div>
       </div>
 
-      <!-- penumpang & driver -->
-      <div class="">
-        <div class="grid md:flex md:flex-row md:justify-start gap-2">
-          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-            >Panumpang & Sopir</span
-          >
-          <div class="flex flex-col gap-2 w-[100%] md:w-[80%]">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="text-[14px] md:text-[16px]"
-                  >Penumpang</label
-                >
-                <input
-                  class="rounded-lg w-full text-[14px] md:text-[16px] md:w-[50%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                  type="number"
-                  v-model="formData.passanger"
-                  min="1"
-                  required
-                  placeholder="Masukkan jumlah penumpang"
-                />
-              </div>
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="text-[14px] md:text-[16px]">Sopir</label>
-                <select
-                  required
-                  v-model="formData.driver"
-                  class="rounded-lg w-full text-[14px] md:text-[16px] md:w-[50%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                >
-                  <option value="1">Pakai</option>
-                  <option value="0">Tidak Pakai</option>
-                </select>
-              </div>
-            </div>
-            <div class="text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Deskripsi</label>
-              <textarea
-                class="rounded-lg w-[100%] h-[7vmax] p-3 text-[14px] md:text-[16px] border border-[#D9D9D9]"
-                required
-                cols="30"
-                rows="10"
-                v-model="formData.passanger_description"
-                placeholder="Masukan catatan anda terkait penumpang dan sopir"
-              ></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="grid md:flex md:flex-row md:justify-start gap-2">
         <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
           >Konfirmasi</span
@@ -140,34 +130,14 @@
         <div class="grid grid-rows-1 gap-2 w-[100%] md:w-[80%]">
           <div class="grid grid-cols-3 md:grid-cols-4 gap-5">
             <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Status</label>
+              <label for="" class="text-[14px] md:text-[16px]">Konfirmasi</label>
               <select
                 required
                 v-model="formData.status"
                 class="rounded-lg text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
               >
-                <option value="Diterima">Diterima</option>
+                <option value="Diterima">Dikonfirmasi</option>
                 <option value="Ditolak">Ditolak</option>
-              </select>
-            </div>
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Mobil</label>
-              <select
-                v-model="formData.car_id"
-                class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
-              >
-                <option value="">-</option>
-                <option v-for="car in carStore.cars" :value="car.id">{{ car.name }}</option>
-              </select>
-            </div>
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Sopir</label>
-              <select
-                v-model="formData.driver_id"
-                class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
-              >
-                <option value="">-</option>
-                <option v-for="driver in driverStore.drivers" :value="driver.id">{{ driver.name }}</option>
               </select>
             </div>
           </div>

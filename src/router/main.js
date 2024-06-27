@@ -10,10 +10,10 @@ import UsersRiwayatPinjamMobilDetail from "../views/users/PinjamMobil/riwayatpin
 import UsersProfile from "../views/users/Profile/profile.vue";
 import UsersEditProfile from "../views/users/Profile/EditProfile.vue";
 import UsersGantiPassword from "../views/users/Profile/GantiPassword.vue";
+import UsersInformasi from "../views/users/Profile/Informasi.vue";
 import UsersNotifikasi from "../views/users/notifikasi.vue";
 import UsersAmbilMobil from "../views/users/PinjamMobil/ambilmobil.vue";
 import UsersCalendar from "../views/users/PinjamRuangan/kalender.vue";
-import coba from "../views/users/coba.vue";
 import UsersPengajuanRuangan from "../views/users/PinjamRuangan/pengajaun.vue";
 import UsersPengajuanRuanganDetail from "../views/users/PinjamRuangan/detailpengajuan.vue";
 import UsersRiwayatPinjamRuangan from "../views/users/PinjamRuangan/riwayatpinjamruang.vue";
@@ -71,7 +71,7 @@ export default [
     name: "users",
     component: UsersPinjamin,
     meta: {
-      title: "User Pinjamin",
+      title: "Main Menu",
       layout: NavbarPinjamin,
       middleware: [AuthMiddleware],
     },
@@ -147,6 +147,16 @@ export default [
     },
   },
   {
+    path: "/users/informasi",
+    name: "users.informasi",
+    component: UsersInformasi,
+    meta: {
+      title: "Informasi",
+      layout: NavbarPinjamin,
+      middleware: [AuthMiddleware],
+    },
+  },
+  {
     path: "/users/notifikasi",
     name: "users.notifikasi",
     component: UsersNotifikasi,
@@ -170,16 +180,6 @@ export default [
     path: "/users/pinjam-ruangan",
     name: "users.pinjam.ruangan",
     component: UsersCalendar,
-    meta: {
-      title: "Pinjam Ruang",
-      layout: NavbarPinjamin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/coba",
-    name: "coba",
-    component: coba,
     meta: {
       title: "Pinjam Ruang",
       layout: NavbarPinjamin,
