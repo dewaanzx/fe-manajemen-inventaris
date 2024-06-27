@@ -80,7 +80,7 @@
         <!-- akhir card material -->
       </div>
 
-      <!-- akhir card ruangan -->
+      <!-- akhir card monitoring -->
 	   
       <!-- akhir informasi -->
     </div>
@@ -119,9 +119,9 @@
         </p>
       </div>
     </button>
-    <!-- pinjam ruangan -->
+    <!-- pinjam monitoring -->
     <button
-      @click="$router.push('/users/pinjam-ruangan')"
+      @click="$router.push('/users/monitoring')"
       class="w-[25vw] md:w-[15vw] bg-[#D3E86A] p-3 md:py-12 md:px-6 rounded-lg flex flex-col gap-3 items-center hover:bg-blue-300"
     >
       <div

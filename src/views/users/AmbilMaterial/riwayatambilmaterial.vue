@@ -48,12 +48,12 @@
           <img src="../../assets/search-alt-2.svg" alt="" />
           <input
             type="text"
-            placeholder="cari pinjaman "
+            placeholder="cari riwayat "
             class="text-[12px] md:text-[16px] focus:outline-none w-[100%]"
           />
         </form>
         <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Semua'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Semua'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Semua')"
@@ -66,7 +66,7 @@
               Semua
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Dicek'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Dicek'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Dicek')"
@@ -79,7 +79,7 @@
               Dicek
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Ditolak'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Ditolak'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Ditolak')"
@@ -92,7 +92,7 @@
               Ditolak
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Diterima'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Diterima'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Diterima')"
@@ -105,7 +105,7 @@
               Diterima
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Digunakan'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Digunakan'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Digunakan')"
@@ -118,7 +118,7 @@
               Digunakan
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-pinjam-mobil/Selesai'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Selesai'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
               @click="fetchByStatus('Selesai')"
@@ -141,7 +141,7 @@
       <RouterLink
         class="w-full p-4 md:px-9 md:py-5 border border-[#e5e5e5] rounded-lg md:rounded-[24px] flex justify-between shadow-sm"
         v-for="car_transaction in carTransactionStore.car_transactions"
-        :to="'/users/riwayat-pinjam-mobil-detail/' + car_transaction.id"
+        :to="'/users/riwayat-ambil-material-detail/' + car_transaction.id"
       >
         <div class="w-[75%] flex flex-col gap-1">
           <p style="line-height: 1.2em">{{ car_transaction.destination }}</p>

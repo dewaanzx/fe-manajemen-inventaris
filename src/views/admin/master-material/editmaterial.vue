@@ -15,22 +15,22 @@
 	                class="rounded-lg w-[100%] text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
 	                type="text"
 	                required
-	                placeholder="Masukkan Nama Mobil"
+	                placeholder="Masukkan Nama Barang"
 	                v-model="formData.name"
 	              />
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
-	              <label for="" class="text-[14px] md:text-[16px]">Nomor Polisi</label>
+	              <label for="" class="text-[14px] md:text-[16px]">Ukuran</label>
 	              <input
 	                class="rounded-lg w-[100%] text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
 	                type="text"
 	                required
-	                placeholder="Masukkan Nomor Polisi"
+	                placeholder="Masukkan Ukuran"
 	                v-model="formData.license"
 	              />
 	            </div>
 	          <div>
-	            <label for="">Foto Mobil</label>
+	            <label for="">Foto Barang</label>
 	            <label
 	              for="imageinput"
 	              class="flex flex-col items-center justify-center border-2 border-dashed md:rounded-[24px] border-[#131A29] rounded-md cursor-pointer hover:bg-slate-100 opacity-60 p-5 h-[400px]"

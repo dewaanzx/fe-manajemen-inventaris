@@ -13,12 +13,7 @@ import UsersGantiPassword from "../views/users/Profile/GantiPassword.vue";
 import UsersInformasi from "../views/users/Profile/Informasi.vue";
 import UsersNotifikasi from "../views/users/notifikasi.vue";
 
-
-import UsersCalendar from "../views/users/PinjamRuangan/kalender.vue";
-import UsersPengajuanRuangan from "../views/users/PinjamRuangan/pengajaun.vue";
-import UsersPengajuanRuanganDetail from "../views/users/PinjamRuangan/detailpengajuan.vue";
-import UsersRiwayatPinjamRuangan from "../views/users/PinjamRuangan/riwayatpinjamruang.vue";
-import UsersRiwayatPinjamRuanganDetail from "../views/users/PinjamRuangan/riwayatpinjamruanganDetail.vue";
+import UsersMonitoring from "../views/users/Monitoring/monitoring.vue";
 
 import ExampleLayout from "@/layouts/ExampleLayout.vue";
 import NavbarTelkom from "../layouts/Navbar.vue";
@@ -62,7 +57,7 @@ export default [
     name: "users.riwayatambilmaterial",
     component: UsersRiwayatMaterial,
     meta: {
-      title: "Riwayat Ambil Material",
+      title: "Riwayat Pinjam Material",
       layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
@@ -138,51 +133,11 @@ export default [
     },
   },
   {
-    path: "/users/pinjam-ruangan",
-    name: "users.pinjam.ruangan",
-    component: UsersCalendar,
+    path: "/users/monitoring",
+    name: "users.monitoring",
+    component: UsersMonitoring,
     meta: {
-      title: "Pinjam Ruang",
-      layout: NavbarTelkom,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/users/pinjam-ruangan/pengajuan",
-    name: "users.pengajuan.ruangan",
-    component: UsersPengajuanRuangan,
-    meta: {
-      title: "Pengajuan Ruangan",
-      layout: NavbarTelkom,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/users/pinjam-ruangan/pengajuan/detail",
-    name: "users.pengajuan.ruangan.detail",
-    component: UsersPengajuanRuanganDetail,
-    meta: {
-      title: "Detail Pengajuan Ruangan",
-      layout: NavbarTelkom,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/users/riwayat-pinjam-ruangan/:status",
-    name: "users.riwayat.pinjam.ruangan",
-    component: UsersRiwayatPinjamRuangan,
-    meta: {
-      title: "Riwayat Pinjam Ruangan",
-      layout: NavbarTelkom,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/users/riwayat-pinjam-ruangan-detail/:id",
-    name: "users.riwayat.pinjam.ruangan.detail",
-    component: UsersRiwayatPinjamRuanganDetail,
-    meta: {
-      title: "Riwayat Pinjam Ruangan",
+      title: "Monitoring",
       layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },
