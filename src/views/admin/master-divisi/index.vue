@@ -1,4 +1,17 @@
 <template>
+	<div
+        class="p-4 w-[75%] md:w-[30vh] shadow-sm rounded-[24px] border-2 flex flex-col gap-3"
+      >
+        <span class="text-[14px]" style="line-height: 1.2em">
+          Permintaan Peminjaman</span
+        >
+        <div class="flex flex-row justify-between">
+          <!-- <P class="text-[34px]"> {{ countTransactionStore.count_transactions.dicek }}</P> -->
+          <div class="bg-[#C1E9FF] p-4 rounded-full">
+            <img src="../../../assets/pinjaman.svg " class="" alt="" />
+          </div>
+        </div>
+      </div>
   <section>
     <article class="mt-4">
       <div class="md:flex md:flex-row-reverse md:justify-end md:gap-3">
