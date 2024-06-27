@@ -126,7 +126,7 @@
               <p>Pengambilan</p>
             </button>
             <button
-              @click="$router.push('/admin/konfirmasi-mobil')"
+              @click="$router.push('/admin/konfirmasi')"
               class="flex gap-10 justify-center items-center hover:bg-gray-100 p-3 text-[#666666] w-full"
             >
               <p>Konfirmasi</p>
@@ -151,13 +151,13 @@
           </div>
           <div v-show="openmaster" class="flex flex-col gap-1">
             <button
-              @click="$router.push('/admin/master-mobil')"
+              @click="$router.push('/admin/master-material')"
               class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
             >
               <p>Barang</p>
             </button>
             <button
-              @click="$router.push('/admin/master-ruangan')"
+              @click="$router.push('/admin/master-pegawai')"
               class="flex gap-10 justify-center items-center p-3 hover:bg-gray-100 text-[#666666] w-full"
             >
               <p>Pegawai</p>
@@ -234,7 +234,7 @@
             <p>Pinjaman Ruangan</p>
           </button>
           <button
-            @click="$router.push('/admin/konfirmasi-mobil')"
+            @click="$router.push('/admin/konfirmasi')"
             class="flex gap-10 justify-center items-center p-3 text-[#666666] w-full"
           >
             <p>Konfirmasi Mobil</p>

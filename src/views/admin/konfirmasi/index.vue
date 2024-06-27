@@ -47,7 +47,7 @@
           >Pegawai telah mengambil barang, ayo konfirmasi</span
         >
         <button
-          @click="$router.push('/admin/konfirmasi-mobil/konfirmasi/' + car_transaction.id)"
+          @click="$router.push('/admin/konfirmasi/konfirmasi/' + car_transaction.id)"
           class="p-1 md:px-4 md:py-2 bg-orange-400 hover:bg-orange-500 text-[10px] md:text-[14px] text-white rounded-[12px]"
         >
           Konfirmasi
