@@ -23,10 +23,6 @@ import MasterRuangan from "../views/admin/master-ruangan/index.vue";
 import TambahRuangan from "../views/admin/master-ruangan/tambahruangan.vue";
 import DetailRuangan from "../views/admin/master-ruangan/detailruangan.vue";
 import EditRuangan from "../views/admin/master-ruangan/editruangan.vue";
-import MasterSopir from "../views/admin/master-sopir/index.vue";
-import TambahSopir from "../views/admin/master-sopir/tambahsopir.vue";
-import DetailSopir from "../views/admin/master-sopir/detailsopir.vue";
-import EditSopir from "../views/admin/master-sopir/editsopir.vue";
 import MasterDivisi from "../views/admin/master-divisi/index.vue";
 import TambahDivisi from "../views/admin/master-divisi/tambahdivisi.vue";
 import EditDivisi from "../views/admin/master-divisi/editdivisi.vue";
@@ -226,46 +222,6 @@ export default [
     path: "/admin/master-ruangan/edit/:id",
     name: "EditRuangan",
     component: EditRuangan,
-    meta: {
-      title: "Admin",
-      layout: NavbarAdmin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/admin/master-sopir/",
-    name: "MasterSopir",
-    component: MasterSopir,
-    meta: {
-      title: "Admin",
-      layout: NavbarAdmin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/admin/master-sopir/tambah",
-    name: "TambahSopir",
-    component: TambahSopir,
-    meta: {
-      title: "Admin",
-      layout: NavbarAdmin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/admin/master-sopir/detail/:id",
-    name: "DetailSopir",
-    component: DetailSopir,
-    meta: {
-      title: "Admin",
-      layout: NavbarAdmin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/admin/master-sopir/edit/:id",
-    name: "EditSopir",
-    component: EditSopir,
     meta: {
       title: "Admin",
       layout: NavbarAdmin,

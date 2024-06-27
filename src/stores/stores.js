@@ -7,7 +7,6 @@ export const useMobilStore1 = defineStore("mobil.satu", {
     tanggal: "",
     waktu: "",
     penumpang: "",
-    sopir: "",
     keterangan: "",
   }),
   actions: {
@@ -19,7 +18,6 @@ export const useMobilStore1 = defineStore("mobil.satu", {
       this.tanggal = data.tanggal;
       this.waktu = data.waktu;
       this.penumpang = data.penumpang;
-      this.sopir = data.sopir;
       this.keterangan = data.keterangan;
     },
 
