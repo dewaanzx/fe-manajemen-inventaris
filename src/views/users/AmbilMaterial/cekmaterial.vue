@@ -1,33 +1,33 @@
 <template>
 	<section class="md:w-[75%] mx-auto flex flex-col gap-8">
 	  <article class="flex flex-row flex-wrap justify-between gap-3 md:gap-14">
-		<!-- card cek material -->
+		<!-- materiald cek material -->
 		<div
-		  v-for="car in carStore.cars"
-		  :key="car.id"
+		  v-for="material in materialStore.materials"
+		  :key="material.id"
 		  class="flex flex-col gap-5 w-[45%] md:w-[20%] p-3 border rounded-xl justify-between"
 		>
 		  <div class="flex flex-col gap-[6px]">
 			<img
-			  :src="getImageUrl(car.picture)"
+			  :src="getImageUrl(material.picture)"
 			  alt=""
 			  class="w-[13vmax] h-[8vmax] rounded-lg mx-auto"
 			  style="object-fit: cover"
 			/>
 			<span class="text-[14px] text-gray-800 leading-4">
-			  {{ car.name }}
+			  {{ material.name }}
 			</span>
 		  </div>
 		  <!-- rectangle -->
 		  <div class="h-[1px] bg-[#D9D9D9]"></div>
 		  <!-- Informasi tujuan apabila dipakai -->
 		  <div class="flex flex-col leading-4 gap-1">
-			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="car.availability == 0">Sedang Digunakan</span>
-			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="car.availability == 1">Tersedia</span>
+			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="material.availability == 0">Sedang Digunakan</span>
+			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="material.availability == 1">Tersedia</span>
 		  </div>
 		  <!-- button -->
 		  <button
-			@click="$router.push('/users/cekmaterial/detail/' + car.id)"
+			@click="$router.push('/users/cekmaterial/detail/' + material.id)"
 			class="text-[14px] bg-[#E26B00] text-white rounded-lg py-[6px]"
 		  >
 			Detail
@@ -38,12 +38,12 @@
   </template>
   
   <script>
-  import { useCarStore } from "../../../stores/car.store";
+  import { useMaterialStore } from "../../../stores/material.store";
   
   export default {
 	data() {
 	  return {
-		carStore: useCarStore(),
+		materialStore: useMaterialStore(),
 	  };
 	},
 	methods: {
@@ -53,13 +53,13 @@
 	  },
 	},
 	beforeRouteEnter(to, from, next) {
-	  const CarStore = useCarStore();
-	  CarStore.fetch().then(() => {
+	  const MaterialStore = useMaterialStore();
+	  MaterialStore.fetch().then(() => {
 		next(vm => {
-		  vm.CarStore = CarStore;
+		  vm.MaterialStore = MaterialStore;
 		});
 	  });
 	},
   };
   </script>
-  
+  ../../../stores/material.store

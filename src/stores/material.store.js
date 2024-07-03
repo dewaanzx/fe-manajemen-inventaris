@@ -3,32 +3,32 @@ import { axiosWrapper } from "@/helper/axios-wrapper.js";
 
 const baseUrl = import.meta.env.VITE_BASE_URL || 'http://localhost:8080';
 
-export const useCarStore = defineStore({
-  id: "car",
+export const useMaterialStore = defineStore({
+  id: "material",
   state: () => ({
-    cars: [],
-    car: null,
+    materials: [],
+    material: null,
   }),
   actions: {
     async fetch() {
-      let url = `${baseUrl}/car`;
+      let url = `${baseUrl}/material`;
 
       const response = await axiosWrapper.get(url);
 
       if (response) {
-        this.cars = response.data.map(car => ({
-          ...car,
-          picture: this.getFullImageUrl(car.picture),
+        this.materials = response.data.map(material => ({
+          ...material,
+          picture: this.getFullImageUrl(material.picture),
         }));
       }
     },
     async show(id) {
-      let url = `${baseUrl}/car/${id}`;
+      let url = `${baseUrl}/material/${id}`;
 
       const response = await axiosWrapper.get(url);
 
       if (response) {
-        this.car = {
+        this.material = {
           ...response.data,
           picture: this.getFullImageUrl(response.data.picture),
         };
@@ -41,7 +41,7 @@ export const useCarStore = defineStore({
       formData.append("picture", data.picture);
 
       const response = await axiosWrapper.post(
-        `${baseUrl}/car/`,
+        `${baseUrl}/material/`,
         formData,
         true,
         {
@@ -52,12 +52,12 @@ export const useCarStore = defineStore({
       );
 
       if (response) {
-        this.car = {
+        this.material = {
           ...response.data,
           picture: this.getFullImageUrl(response.data.picture),
         };
-        // If the response contains the new car in a different structure (like response.data.data), use this instead:
-        // this.car = {
+        // If the response contains the new material in a different structure (like response.data.data), use this instead:
+        // this.material = {
         //   ...response.data.data,
         //   picture: this.getFullImageUrl(response.data.data.picture),
         // };
@@ -72,7 +72,7 @@ export const useCarStore = defineStore({
       formData.append("picture", data.picture);
 
       const response = await axiosWrapper.put(
-        `${baseUrl}/car/${id}`,
+        `${baseUrl}/material/${id}`,
         formData,
         true,
         {
@@ -83,12 +83,12 @@ export const useCarStore = defineStore({
       );
 
       if (response) {
-        this.car = {
+        this.material = {
           ...response.data,
           picture: this.getFullImageUrl(response.data.picture),
         };
-        // If the response contains the updated car in a different structure (like response.data.data), use this instead:
-        // this.car = {
+        // If the response contains the updated material in a different structure (like response.data.data), use this instead:
+        // this.material = {
         //   ...response.data.data,
         //   picture: this.getFullImageUrl(response.data.data.picture),
         // };
@@ -97,7 +97,7 @@ export const useCarStore = defineStore({
       return response;
     },
     async delete(id) {
-      return await axiosWrapper.delete(`${baseUrl}/car/${id}`, {}, true);
+      return await axiosWrapper.delete(`${baseUrl}/material/${id}`, {}, true);
     },
     getFullImageUrl(picture) {
       return `${baseUrl}/${picture}`;

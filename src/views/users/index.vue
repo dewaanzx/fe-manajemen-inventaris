@@ -1,7 +1,7 @@
 <template>
   <!-- ini pembungkus -->
   <div class="w-[80vw] mx-auto text-pinjamin flex flex-col gap-12">
-    <!-- Card Informasi -->
+    <!-- Materiald Informasi -->
     <div class="flex flex-col gap-2 md:gap-0 md:flex-row md:justify-between">
       <!-- bagian status pinjam material -->
       <div class="md:w-[80vw]">
@@ -16,9 +16,9 @@
           class="mySwiper"
         >
           <swiper-slide
-            v-for="car_transaction in carTransactionStore.car_transactions"
+            v-for="material_transaction in materialTransactionStore.material_transactions"
           >
-            <!-- cardnya -->
+            <!-- materialdnya -->
             <div
               class="border border-[#666666] gap-4 flex flex-col rounded-[18px] p-3 md:p-6"
             >
@@ -27,7 +27,7 @@
                   <Span
                     class="text-[18px] md:text-[27px] font-semibold pb-3"
                     style="line-height: 1.2em"
-                    >{{ car_transaction.destination }}
+                    >{{ material_transaction.destination }}
                   </Span>
                   <Span
                     class="flex flex-row items-center text-[14px] md:text-[18px] gap-1"
@@ -37,7 +37,7 @@
                       class="w-[2.3333vmax] h-[2.3333vmax] md:w-[28px] md:h-[28px]"
                       alt=""
                     />
-                    {{ car_transaction.date_start }}
+                    {{ material_transaction.date_start }}
                   </Span>
                   <Span
                     class="flex flex-row items-center text-[14px] md:text-[18px] gap-1"
@@ -47,14 +47,14 @@
                       class="w-[2.3333vmax] h-[2.3333vmax] md:w-[28px] md:h-[28px]"
                       alt=""
                     />
-                    {{ car_transaction.time_start }}
+                    {{ material_transaction.time_start }}
                   </Span>
                 </div>
                 <!-- <div>
                   <button
                     class="w-[15.5vmin] md:px-5 md:py-[6px] bg-[#EEFFEE] text-[11px] md:text-[14px] text-[#008000] rounded-lg"
                   >
-                    {{ car_transaction.status }}
+                    {{ material_transaction.status }}
                   </button>
                 </div> -->
               </div>
@@ -77,10 +77,10 @@
             </div>
           </swiper-slide>
         </swiper>
-        <!-- akhir card material -->
+        <!-- akhir materiald material -->
       </div>
 
-      <!-- akhir card monitoring -->
+      <!-- akhir materiald monitoring -->
 	   
       <!-- akhir informasi -->
     </div>
@@ -151,7 +151,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
-import { useCarTransactionStore } from "../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../stores/material_transaction.store";
 import { useRoomTransactionStore } from "../../stores/room_transaction.store";
 
 export default {
@@ -166,7 +166,7 @@ export default {
   },
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
       roomTransactionStore: useRoomTransactionStore(),
       formData: {
         date: null,
@@ -177,15 +177,15 @@ export default {
   },
   methods: {
     async create() {
-      let car_transaction = await this.carTransactionStore.add(this.formData);
+      let material_transaction = await this.materialTransactionStore.add(this.formData);
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/users");
       }
     },
   },
   mounted() {
-    this.carTransactionStore.fetchByStatus("Diterima");
+    this.materialTransactionStore.fetchByStatus("Diterima");
     this.roomTransactionStore.fetchByStatus("Diterima");
   },
 };
@@ -204,3 +204,4 @@ export default {
   /* Center slide text vertically */
 }
 </style>
+../../stores/material_transaction.store

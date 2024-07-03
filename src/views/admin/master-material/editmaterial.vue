@@ -66,12 +66,12 @@
   </section>
 </template>
 <script>
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialStore } from "../../../stores/material.store";
 
 export default {
   data() {
     return {
-      carStore: useCarStore(),
+      materialStore: useMaterialStore(),
       formData: {
         name: null,
         license: null,
@@ -95,21 +95,22 @@ export default {
     },
     async update() {
       const id = this.$route.params.id;
-      let car = await this.carStore.update(id, this.formData);
+      let material = await this.materialStore.update(id, this.formData);
 
-      if (car) {
+      if (material) {
         this.$router.push("/admin/master-material");
       }
     },
   },
   mounted() {
     const id = this.$route.params.id;
-    this.carStore.show(id).then(() => {
-      const car = this.carStore.cars;
+    this.materialStore.show(id).then(() => {
+      const material = this.materialStore.materials;
 
-      this.formData.name = car.name;
-      this.formData.license = car.license;
+      this.formData.name = material.name;
+      this.formData.license = material.license;
     });
   },
 };
 </script>
+../../../stores/material.store

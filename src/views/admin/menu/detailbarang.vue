@@ -16,7 +16,7 @@
             <div class="flex flex-col text-[12px] gap-1">
               <label for="" class="md:text-[16px]">Nama</label>
               <p class="md:text-[14px]" style="line-height: 1.2em">
-                {{ carTransactionStore.car_transactions.borrower }}
+                {{ materialTransactionStore.material_transactions.borrower }}
               </p>
             </div>
           </div>
@@ -31,13 +31,13 @@
             <div class="flex flex-col text-[12px] gap-1">
               <label for="" class="md:text-[16px]">Tujuan</label>
               <p class="md:text-[14px]" style="line-height: 1.2em">
-                {{ carTransactionStore.car_transactions.destination }}
+                {{ materialTransactionStore.material_transactions.destination }}
               </p>
             </div>
             <div class="flex flex-col text-[12px] gap-1">
               <label for="" class="md:text-[16px]">Deskripsi</label>
               <p class="md:text-[14px] w-[90%]">
-                {{ carTransactionStore.car_transactions.description }}
+                {{ materialTransactionStore.material_transactions.description }}
               </p>
             </div>
           </div>
@@ -54,13 +54,13 @@
               <div class="flex flex-col text-[12px] gap-1">
                 <label for="" class="md:text-[16px]">Tanggal</label>
                 <p class="md:text-[14px]">
-                  {{ carTransactionStore.car_transactions.date_start }}
+                  {{ materialTransactionStore.material_transactions.date_start }}
                 </p>
               </div>
               <div class="flex flex-col text-[12px] gap-1">
                 <label for="" class="md:text-[16px]">Jam</label>
                 <p class="md:text-[14px]">
-                  {{ carTransactionStore.car_transactions.time_start }}
+                  {{ materialTransactionStore.material_transactions.time_start }}
                 </p>
               </div>
             </div>
@@ -78,20 +78,20 @@
               <div class="flex flex-col text-[12px] gap-1">
                 <label for="" class="md:text-[16px]">Penumpang</label>
                 <p class="md:text-[14px]">
-                  {{ carTransactionStore.car_transactions.passanger }}
+                  {{ materialTransactionStore.material_transactions.passanger }}
                 </p>
               </div>
               <div class="flex flex-col text-[12px] gap-1">
                 <label for="" class="md:text-[16px]">Sopir</label>
                 <p
                   class="md:text-[14px]"
-                  v-if="carTransactionStore.car_transactions.driver == 1"
+                  v-if="materialTransactionStore.material_transactions.driver == 1"
                 >
                   Ya
                 </p>
                 <p
                   class="md:text-[14px]"
-                  v-if="carTransactionStore.car_transactions.driver == 0"
+                  v-if="materialTransactionStore.material_transactions.driver == 0"
                 >
                   Tidak
                 </p>
@@ -100,7 +100,7 @@
             <div class="text-[12px] flex flex-col gap-1">
               <label for="" class="md:text-[16px]">Deskripsi </label>
               <p class="md:text-[14px]">
-                {{ carTransactionStore.car_transactions.passanger_description }}
+                {{ materialTransactionStore.material_transactions.passanger_description }}
               </p>
             </div>
           </div>
@@ -117,21 +117,21 @@
               <p class="font-semibold md:text-[14px]">
                 <a
                   :class="
-                    carTransactionStore.car_transactions.status == 'Diterima'
+                    materialTransactionStore.material_transactions.status == 'Diterima'
                       ? 'text-green-600'
-                      : carTransactionStore.car_transactions.status == 'Ditolak'
+                      : materialTransactionStore.material_transactions.status == 'Ditolak'
                       ? 'text-red-600'
-                      : carTransactionStore.car_transactions.status == 'Dicek'
+                      : materialTransactionStore.material_transactions.status == 'Dicek'
                       ? 'text-gray-600'
-                      : carTransactionStore.car_transactions.status == 'Selesai'
+                      : materialTransactionStore.material_transactions.status == 'Selesai'
                       ? 'text-gray-600'
-                      : carTransactionStore.car_transactions.status ==
+                      : materialTransactionStore.material_transactions.status ==
                         'Digunakan'
                       ? 'text-orange-400'
                       : ''
                   "
                 >
-                  {{ carTransactionStore.car_transactions.status }}</a
+                  {{ materialTransactionStore.material_transactions.status }}</a
                 >
               </p>
             </div>
@@ -141,7 +141,7 @@
     </form>
     <!-- box alert -->
     <div
-      v-if="!carTransactionStore.car_transactions.car_id"
+      v-if="!materialTransactionStore.material_transactions.material_id"
       class="rounded-lg md:rounded-[36px] border border-[#D9D9D9] p-4 md:p-12 text-[11px] md:text-[16px] flex justify-center"
     >
       <p>
@@ -152,12 +152,12 @@
 
     <!-- box mobil -->
     <div
-      v-if="carTransactionStore.car_transactions.car_id"
+      v-if="materialTransactionStore.material_transactions.material_id"
       class="rounded-lg md:rounded-[36px] border border-[#D9D9D9] p-4 md:p-9 flex flex-col md:flex-row gap-3 md:gap-2"
     >
       <div class="w-[50%] md:w-[20%] h-[12vmax] rounded-sm m-auto md:m-0">
         <img
-          :src="'http://api.pinjamin.appmedia.id/uploads/cars/' + carStore.cars.picture"
+          :src="'http://api.pinjamin.appmedia.id/uploads/materials/' + materialStore.materials.picture"
           class="w-full h-[14vmax] md:h-[10vmax] md:w-[13vmax] rounded-md md:rounded-[20px]"
           style="object-fit: cover"
           alt=""
@@ -169,7 +169,7 @@
           <p
             class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
           >
-            {{ carStore.cars.name }}
+            {{ materialStore.materials.name }}
           </p>
         </div>
         <!-- Kapasitas -->
@@ -181,7 +181,7 @@
             Nomor kendaraan
           </p>
           <p class="text-[12px] md:text-[14px] text-center md:text-left">
-            {{ carStore.cars.license }}
+            {{ materialStore.materials.license }}
           </p>
         </div>
       </div>
@@ -191,7 +191,7 @@
     <!-- box bukti ambil mobil -->
     <div
       class="rounded-lg md:rounded-[36px] border border-[#D9D9D9] p-4 md:p-9 flex flex-col md:flex-row md:justify-around gap-3 md:gap-2 text-[12px] md:text-[16px]"
-      v-if="carTransactionStore.car_transactions.datetime_taken"
+      v-if="materialTransactionStore.material_transactions.datetime_taken"
     >
       <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
         >Bukti ambil mobil</span
@@ -201,7 +201,7 @@
           <!-- jam -->
           <span>Jam</span>
           <p class="md:text-[14px]">
-            {{ carTransactionStore.car_transactions.datetime_taken }}
+            {{ materialTransactionStore.material_transactions.datetime_taken }}
           </p>
         </div>
         <div>
@@ -211,8 +211,8 @@
             <div class="">
               <img
                 :src="
-                  'https://api.pinjamin.appmedia.id/uploads/cars_booking/' +
-                  carTransactionStore.car_transactions.picture
+                  'https://api.pinjamin.appmedia.id/uploads/materials_booking/' +
+                  materialTransactionStore.material_transactions.picture
                 "
                 alt=""
                 style="object-fit: cover"
@@ -228,8 +228,8 @@
             <div class="">
               <img
                 :src="
-                  'https://api.pinjamin.appmedia.id/uploads/cars_booking/' +
-                  carTransactionStore.car_transactions.driving_license
+                  'https://api.pinjamin.appmedia.id/uploads/materials_booking/' +
+                  materialTransactionStore.material_transactions.driving_license
                 "
                 alt=""
                 style="object-fit: cover"
@@ -243,23 +243,24 @@
   </div>
 </template>
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
+import { useMaterialStore } from "../../../stores/material.store";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
-      carStore: useCarStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
+      materialStore: useMaterialStore(),
     };
   },
   mounted() {
     const id = this.$route.params.id;
-    this.carTransactionStore.show(id).then(() => {
-      const carId = this.carTransactionStore.car_transactions.car_id;
+    this.materialTransactionStore.show(id).then(() => {
+      const materialId = this.materialTransactionStore.material_transactions.material_id;
 
-      this.carStore.show(carId);
+      this.materialStore.show(materialId);
     });
   },
 };
 </script>
+../../../stores/material_transaction.store../../../stores/material.store

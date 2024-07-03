@@ -172,16 +172,16 @@
   </section>
 </template>
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
+import { useMaterialStore } from "../../../stores/material.store";
 import { useDriverStore } from "../../../stores/driver.store";
 import { useUser2Store } from "../../../stores/user.store";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
-      carStore: useCarStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
+      materialStore: useMaterialStore(),
       driverStore: useDriverStore(),
       user2Store: useUser2Store(),
       formData: {
@@ -194,7 +194,7 @@ export default {
         passanger_description: null,
         driver: null,
         status: null,
-        car_id: null,
+        material_id: null,
         driver_id: null,
         confirmation_note: null,
       },
@@ -212,25 +212,26 @@ export default {
     },
     async create() {
       const driver = this.formData.driver_id;
-      const car = this.formData.car_id;
+      const material = this.formData.material_id;
       if (driver == ""){
         delete this.formData.driver_id;
       }
-      if (car == ""){
-        delete this.formData.car_id;
+      if (material == ""){
+        delete this.formData.material_id;
       }
 
-      let car_transaction = await this.carTransactionStore.add(this.formData);
+      let material_transaction = await this.materialTransactionStore.add(this.formData);
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/admin/menu/Semua");
       }
     },
   },
   mounted() {
-    this.carStore.fetch();
+    this.materialStore.fetch();
     this.driverStore.fetch();
     this.user2Store.fetch();
   },
 };
 </script>
+../../../stores/material_transaction.store../../../stores/material.store
