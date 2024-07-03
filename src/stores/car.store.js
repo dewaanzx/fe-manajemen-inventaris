@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { axiosWrapper } from "@/helper/axios-wrapper.js";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
+const baseUrl = import.meta.env.VITE_BASE_URL || 'http://localhost:8080';
 
 export const useCarStore = defineStore({
   id: "car",
@@ -13,19 +13,25 @@ export const useCarStore = defineStore({
     async fetch() {
       let url = `${baseUrl}/car`;
 
-      const cars = await axiosWrapper.get(url);
+      const response = await axiosWrapper.get(url);
 
-      if (cars) {
-        this.cars = cars.data;
+      if (response) {
+        this.cars = response.data.map(car => ({
+          ...car,
+          picture: this.getFullImageUrl(car.picture),
+        }));
       }
     },
     async show(id) {
       let url = `${baseUrl}/car/${id}`;
 
-      const cars = await axiosWrapper.get(url);
+      const response = await axiosWrapper.get(url);
 
-      if (cars) {
-        this.cars = cars.data;
+      if (response) {
+        this.car = {
+          ...response.data,
+          picture: this.getFullImageUrl(response.data.picture),
+        };
       }
     },
     async add(data) {
@@ -34,7 +40,7 @@ export const useCarStore = defineStore({
       formData.append("license", data.license);
       formData.append("picture", data.picture);
 
-      const car = await axiosWrapper.post(
+      const response = await axiosWrapper.post(
         `${baseUrl}/car/`,
         formData,
         true,
@@ -45,9 +51,19 @@ export const useCarStore = defineStore({
         }
       );
 
-      this.car = car.data;
+      if (response) {
+        this.car = {
+          ...response.data,
+          picture: this.getFullImageUrl(response.data.picture),
+        };
+        // If the response contains the new car in a different structure (like response.data.data), use this instead:
+        // this.car = {
+        //   ...response.data.data,
+        //   picture: this.getFullImageUrl(response.data.data.picture),
+        // };
+      }
 
-      return car;
+      return response;
     },
     async update(id, data) {
       const formData = new FormData();
@@ -55,7 +71,7 @@ export const useCarStore = defineStore({
       formData.append("license", data.license);
       formData.append("picture", data.picture);
 
-      const car = await axiosWrapper.put(
+      const response = await axiosWrapper.put(
         `${baseUrl}/car/${id}`,
         formData,
         true,
@@ -66,12 +82,25 @@ export const useCarStore = defineStore({
         }
       );
 
-      this.car = car.data;
+      if (response) {
+        this.car = {
+          ...response.data,
+          picture: this.getFullImageUrl(response.data.picture),
+        };
+        // If the response contains the updated car in a different structure (like response.data.data), use this instead:
+        // this.car = {
+        //   ...response.data.data,
+        //   picture: this.getFullImageUrl(response.data.data.picture),
+        // };
+      }
 
-      return car;
+      return response;
     },
     async delete(id) {
       return await axiosWrapper.delete(`${baseUrl}/car/${id}`, {}, true);
+    },
+    getFullImageUrl(picture) {
+      return `${baseUrl}/${picture}`;
     },
   },
 });

@@ -90,7 +90,7 @@
     <!-- pinjam material -->
     <button
       class="w-[25vw] md:w-[15vw] bg-[#D3E86A] p-3 md:py-12 md:px-6 rounded-lg flex flex-col gap-3 items-center hover:bg-blue-300"
-      @click="$router.push('/users/pengajuanmaterial')"
+      @click="$router.push('/users/cekmaterial')"
     >
       <div
         class="w-[12vw] h-[12vw] md:w-[5vw] md:h-[5vw] bg-[#25282B] rounded-full flex justify-center items-center"
