@@ -48,7 +48,7 @@
           <img src="../../assets/search-alt-2.svg" alt="" />
           <input
             type="text"
-            placeholder="cari riwayat "
+            placeholder="materiali riwayat "
             class="text-[12px] md:text-[16px] focus:outline-none w-[100%]"
           />
         </form>
@@ -137,21 +137,21 @@
 
     <!-- Bagian List -->
     <div class="grid gap-4 md:gap-6 text-[14px] md:text-[18px]">
-      <!-- card list -->
+      <!-- materiald list -->
       <RouterLink
         class="w-full p-4 md:px-9 md:py-5 border border-[#e5e5e5] rounded-lg md:rounded-[24px] flex justify-between shadow-sm"
-        v-for="car_transaction in carTransactionStore.car_transactions"
-        :to="'/users/riwayat-ambil-material-detail/' + car_transaction.id"
+        v-for="material_transaction in materialTransactionStore.material_transactions"
+        :to="'/users/riwayat-ambil-material-detail/' + material_transaction.id"
       >
         <div class="w-[75%] flex flex-col gap-1">
-          <p style="line-height: 1.2em">{{ car_transaction.destination }}</p>
+          <p style="line-height: 1.2em">{{ material_transaction.destination }}</p>
           <span
             class="flex items-center gap-3 text-[12px] md:text-[14px] text-[#aaa]"
             ><img
               src="../../../assets/calender.png"
               class="w-[14px] h-[14px] md:w-[16px] md:h-[16px]"
               alt=""
-            />{{ car_transaction.date_start }}</span
+            />{{ material_transaction.date_start }}</span
           >
           <span
             class="flex items-center gap-3 text-[12px] md:text-[14px] text-[#aaa]"
@@ -159,37 +159,37 @@
               src="../../../assets/time-line.png"
               class="w-[14px] h-[14px] md:w-[16px] md:h-[16px]"
               alt=""
-            />{{ car_transaction.time_start }}</span
+            />{{ material_transaction.time_start }}</span
           >
         </div>
         <div class="flex items-center">
           <button
             class="w-[15.5vmin] md:w-[15.5vmin] md:h-[5vh] bg-[#EEFFEE] text-[11px] md:text-[14px] text-[#008000] rounded-full"
-            v-if="car_transaction.status == `Diterima`"
+            v-if="material_transaction.status == `Diterima`"
           >
             Diterima
           </button>
           <button
             class="w-[15.5vmin] md:w-[15.5vmin] md:h-[5vh] bg-[#E5E5E5] text-[11px] md:text-[14px] text-[#404040] rounded-full"
-            v-if="car_transaction.status == `Dicek`"
+            v-if="material_transaction.status == `Dicek`"
           >
             Dicek
           </button>
           <button
             class="w-[15.5vmin] md:w-[15.5vmin] md:h-[5vh] bg-[#FFD1D1] text-[11px] md:text-[14px] text-[#d80000] rounded-full"
-            v-if="car_transaction.status == `Ditolak`"
+            v-if="material_transaction.status == `Ditolak`"
           >
             Ditolak
           </button>
           <button
             class="w-[15.5vmin] md:w-[15.5vmin] md:h-[5vh] bg-[#FDEDCA] text-[10px] md:text-[14px] text-orange-500 rounded-full"
-            v-if="car_transaction.status == `Digunakan`"
+            v-if="material_transaction.status == `Digunakan`"
           >
             Digunakan
           </button>
           <button
             class="w-[15.5vmin] md:w-[15.5vmin] md:h-[5vh] bg-[#C1E9FF] text-[11px] md:text-[14px] text-[#003754] rounded-full"
-            v-if="car_transaction.status == `Selesai`"
+            v-if="material_transaction.status == `Selesai`"
           >
             Selesai
           </button>
@@ -200,13 +200,13 @@
 </template>
 
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useRoute } from "vue-router";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
       formData: {
         date: null,
         time: null,
@@ -216,19 +216,20 @@ export default {
   },
   methods: {
     async create() {
-      let car_transaction = await this.carTransactionStore.add(this.formData);
+      let material_transaction = await this.materialTransactionStore.add(this.formData);
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/users");
       }
     },
     fetchByStatus(status) {
-      this.carTransactionStore.fetchByStatus(status);
+      this.materialTransactionStore.fetchByStatus(status);
     },
   },
   mounted() {
     const status = this.$route.params.status;
-    this.carTransactionStore.fetchByStatus(status);
+    this.materialTransactionStore.fetchByStatus(status);
   },
 };
 </script>
+../../../stores/material_transaction.store

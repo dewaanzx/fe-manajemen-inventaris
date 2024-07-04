@@ -52,7 +52,7 @@
             type="text"
             name=""
             class="border px-3 inline-block rounded-[12px] text-[12px] md:text-[16px] h-[40px]"
-            placeholder="Cari Barang"
+            placeholder="Materiali Barang"
             id=""
           />
         </div>
@@ -164,27 +164,27 @@
               <th class="font-medium text-left py-4 pr-4 pl-2">Status</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Aksi</th>
             </tr>
-            <tr v-for="car_transaction in paginatedCarTransactions" class="text-[12px] md:text-[14px] border-b">
-              <td class="pr-4 pl-2 md:py-4">{{ car_transaction.destination }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ car_transaction.date_start }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ car_transaction.time_start }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ car_transaction.borrower }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ car_transaction.status }}</td>
+            <tr v-for="material_transaction in paginatedMaterialTransactions" class="text-[12px] md:text-[14px] border-b">
+              <td class="pr-4 pl-2 md:py-4">{{ material_transaction.destination }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material_transaction.date_start }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material_transaction.time_start }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material_transaction.borrower }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material_transaction.status }}</td>
               <td
                 class="flex flex-col justify-start text-[12px] gap-1 md:gap-2 py-2 md:py-5"
               >
-                <button @click="$router.push('/admin/menu/edit/' + car_transaction.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
-                <button @click="$router.push('/admin/menu/detail/' + car_transaction.id)" class="bg-gray-400 text-white rounded-md">
+                <button @click="$router.push('/admin/menu/edit/' + material_transaction.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
+                <button @click="$router.push('/admin/menu/detail/' + material_transaction.id)" class="bg-gray-400 text-white rounded-md">
                   Detail
                 </button>
-                <button @click="confirmDelete(car_transaction.id)" class="bg-red-400 text-white rounded-md">Delete</button>
+                <button @click="confirmDelete(material_transaction.id)" class="bg-red-400 text-white rounded-md">Delete</button>
               </td>
             </tr>
           </table>
           <div class="flex justify-end mt-4">
             <button @click="currentPage -= 1" :disabled="currentPage === 1">Previous</button>
             <span class="mx-2">{{ currentPage }}</span>
-            <button @click="currentPage += 1" :disabled="currentPage * itemsPerPage >= carTransactionStore.car_transactions.length">Next</button>
+            <button @click="currentPage += 1" :disabled="currentPage * itemsPerPage >= materialTransactionStore.material_transactions.length">Next</button>
           </div>
 
         </div>
@@ -193,14 +193,14 @@
   </section>
 </template>
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useCountTransactionStore } from "../../../stores/count_transaction.store";
 import { useRoute } from "vue-router";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
       countTransactionStore: useCountTransactionStore(),
       status: null,
       currentPage: 1,
@@ -211,55 +211,56 @@ export default {
   methods: {
     confirmDelete(id) {
       if (window.confirm("Apakah anda yakin ingin menghapus ini?")) {
-        this.deleteCarTransaction(id);
+        this.deleteMaterialTransaction(id);
       }
     },
-    deleteCarTransaction(id) {
+    deleteMaterialTransaction(id) {
       const status = this.$route.params.status;
-      this.carTransactionStore.delete(id)
+      this.materialTransactionStore.delete(id)
         .then(() => {
-          this.carTransactionStore.fetchByStatus(status);
+          this.materialTransactionStore.fetchByStatus(status);
         });
     },
     fetchByStatus(status) {
-      this.carTransactionStore.fetchByStatus(status);
+      this.materialTransactionStore.fetchByStatus(status);
     },
   },
   beforeRouteEnter(to, from, next) {
-    const carTransactionStore = useCarTransactionStore();
+    const materialTransactionStore = useMaterialTransactionStore();
     const status = to.params.status;
 
-    carTransactionStore.fetchByStatus(status).then(() => {
+    materialTransactionStore.fetchByStatus(status).then(() => {
       next(vm => {
         vm.status = status;
-        vm.carTransactionStore = carTransactionStore;
+        vm.materialTransactionStore = materialTransactionStore;
       });
     });
   },
   mounted() {
     const status = this.$route.params.status;
     this.status = status;
-    this.countTransactionStore.car();
+    this.countTransactionStore.material();
   },
   computed: {
-    filteredCarTransactions() {
+    filteredMaterialTransactions() {
       const searchQuery = this.searchQuery.toLowerCase();
-      return this.carTransactionStore.car_transactions.filter(car_transaction => {
+      return this.materialTransactionStore.material_transactions.filter(material_transaction => {
         return (
-          car_transaction.destination.toLowerCase().includes(searchQuery) ||
-          car_transaction.date_start.toLowerCase().includes(searchQuery) ||
-          car_transaction.time_start.toLowerCase().includes(searchQuery) ||
-          car_transaction.borrower.toLowerCase().includes(searchQuery) ||
-          car_transaction.status.toLowerCase().includes(searchQuery)
+          material_transaction.destination.toLowerCase().includes(searchQuery) ||
+          material_transaction.date_start.toLowerCase().includes(searchQuery) ||
+          material_transaction.time_start.toLowerCase().includes(searchQuery) ||
+          material_transaction.borrower.toLowerCase().includes(searchQuery) ||
+          material_transaction.status.toLowerCase().includes(searchQuery)
         );
       });
     },
-    paginatedCarTransactions() {
+    paginatedMaterialTransactions() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.filteredCarTransactions.slice(startIndex, endIndex);
+      return this.filteredMaterialTransactions.slice(startIndex, endIndex);
     },
   },
 };
 </script>
 
+../../../stores/material_transaction.store

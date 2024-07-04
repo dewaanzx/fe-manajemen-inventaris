@@ -42,7 +42,7 @@
     <article class="flex flex-col gap-3">
       <div v-for="notification in notificationStore.notifications">
         <RouterLink
-          v-if="notification.type == `Car`"
+          v-if="notification.type == `Material`"
           :to="
             '/users/riwayat-pinjam-mobil-detail/' + notification.transaction_id
           "

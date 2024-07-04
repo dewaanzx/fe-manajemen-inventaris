@@ -1,5 +1,6 @@
 import UsersTelkom from "../views/users/index.vue";
 
+import UsersCekMaterial from "../views/users/AmbilMaterial/cekmaterial.vue";
 import UsersAmbilMaterial from "../views/users/AmbilMaterial/ambilmaterial.vue";
 
 import UsersPengajuanMaterial from "../views/users/AmbilMaterial/pengajuanmaterial.vue";
@@ -38,6 +39,16 @@ export default [
     component: UsersPengajuanMaterial,
     meta: {
       title: "User Pengajuan Material",
+      layout: NavbarTelkom,
+      middleware: [AuthMiddleware],
+    },
+  },
+  {
+    path: "/users/cekmaterial",
+    name: "users.cekmaterial",
+    component: UsersCekMaterial,
+    meta: {
+      title: "User Cek Material",
       layout: NavbarTelkom,
       middleware: [AuthMiddleware],
     },

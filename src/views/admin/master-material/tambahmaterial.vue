@@ -103,12 +103,12 @@
   </section>
 </template>
 <script>
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialStore } from "../../../stores/material.store";
 
 export default {
   data() {
     return {
-      carStore: useCarStore(),
+      materialStore: useMaterialStore(),
       formData: {
         name: null,
         license: null,
@@ -131,12 +131,13 @@ export default {
       this.formData.picture = picture;
     },
     async create() {
-      let car = await this.carStore.add(this.formData);
+      let material = await this.materialStore.add(this.formData);
 
-      if (car) {
+      if (material) {
         this.$router.push("/admin/master-material");
       }
     },
   },
 };
 </script>
+../../../stores/material.store

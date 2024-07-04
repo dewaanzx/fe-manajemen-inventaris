@@ -17,7 +17,7 @@
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
-		            {{ carStore.cars.name }}
+		            {{ materialStore.materials.name }}
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
@@ -29,7 +29,7 @@
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
-		            {{ carStore.cars.license }}
+		            {{ materialStore.materials.license }}
 		          </p>
 	            </div>
 	          <div>
@@ -41,7 +41,7 @@
 		          </p>
 	            </div>
 		        <img
-		          :src="'http://api.pinjamin.appmedia.id/uploads/cars/' + carStore.cars.picture"
+		          :src="'http://api.pinjamin.appmedia.id/uploads/materials/' + materialStore.materials.picture"
 		          class="w-full rounded-md md:rounded-[20px] md:rounded-[24px] hover:bg-slate-100"
 		          style="object-fit: cover"
 		          alt=""
@@ -54,17 +54,18 @@
   </section>
 </template>
 <script>
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialStore } from "../../../stores/material.store";
 
 export default {
   data() {
     return {
-      carStore: useCarStore(),
+      materialStore: useMaterialStore(),
     };
   },
   mounted() {
     const id = this.$route.params.id;
-    this.carStore.show(id);
+    this.materialStore.show(id);
   },
 };
 </script>
+../../../stores/material.store

@@ -125,12 +125,12 @@
   </section>
 </template>
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
       formData: {
         date: null,
         time_taken: null,
@@ -150,15 +150,16 @@ export default {
     },
     async take() {
       const id = this.$route.params.id;
-      let car_transaction = await this.carTransactionStore.take(
+      let material_transaction = await this.materialTransactionStore.take(
         id,
         this.formData
       );
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/users");
       }
     },
   },
 };
 </script>
+../../../stores/material_transaction.store

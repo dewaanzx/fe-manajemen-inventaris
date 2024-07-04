@@ -227,14 +227,14 @@
 
 <script>
 import { useMobilStore1 } from "@/stores/stores";
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 
 export default {
   data() {
     // const mobilStore = useMobilStore1();
     return {
       mobilStore: useMobilStore1(),
-      carTransactionStore: useCarTransactionStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
       formData: {
         date: null,
         time: null,
@@ -256,12 +256,13 @@ export default {
       this.formData.driver = this.mobilStore.sopir;
       this.formData.passanger_description = this.mobilStore.keterangan;
 
-      let car_transaction = await this.carTransactionStore.add(this.formData);
+      let material_transaction = await this.materialTransactionStore.add(this.formData);
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/users");
       }
     },
   },
 };
 </script>
+../../../stores/material_transaction.store

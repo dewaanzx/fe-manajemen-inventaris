@@ -10,8 +10,8 @@ export const useCountTransactionStore = defineStore({
     count_transaction: null,
   }),
   actions: {
-    async car() {
-      let url = `${baseUrl}/count-transaction/car`;
+    async material() {
+      let url = `${baseUrl}/count-transaction/material`;
 
       const count_transactions = await axiosWrapper.get(url);
 

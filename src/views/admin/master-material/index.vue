@@ -21,7 +21,7 @@
             type="text"
             name=""
             class="border px-3 inline-block rounded-[12px] text-[12px] md:text-[16px] h-[40px]"
-            placeholder="Cari Barang"
+            placeholder="Material Barang"
             id=""
           />
         </div>
@@ -49,26 +49,26 @@
               <th class="font-medium text-left py-4 pr-4 pl-2">Status</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Aksi</th>
             </tr>
-            <tr v-for="car in paginatedCars" class="text-[12px] md:text-[14px] border-b">
-              <td class="pr-4 pl-2 md:py-4">{{ car.name }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ car.license }}</td>
-              <td class="pr-4 pl-2 md:py-4" v-if="car.availability == 1">Tersedia</td>
-              <td class="pr-4 pl-2 md:py-4" v-if="car.availability == 0">Sedang Digunakan</td>
+            <tr v-for="material in paginatedMaterials" class="text-[12px] md:text-[14px] border-b">
+              <td class="pr-4 pl-2 md:py-4">{{ material.name }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material.license }}</td>
+              <td class="pr-4 pl-2 md:py-4" v-if="material.availability == 1">Tersedia</td>
+              <td class="pr-4 pl-2 md:py-4" v-if="material.availability == 0">Sedang Digunakan</td>
               <td
                 class="flex flex-col justify-start text-[12px] gap-1 md:gap-2 py-2 md:py-5"
               >
-                <button @click="$router.push('/admin/master-material/edit/' + car.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
-                <button @click="$router.push('/admin/master-material/detail/' + car.id)" class="bg-gray-400 text-white rounded-md">
+                <button @click="$router.push('/admin/master-material/edit/' + material.id)" class="bg-blue-400 text-white rounded-md">Edit</button>
+                <button @click="$router.push('/admin/master-material/detail/' + material.id)" class="bg-gray-400 text-white rounded-md">
                   Detail
                 </button>
-                <button @click="confirmDelete(car.id)" class="bg-red-400 text-white rounded-md">Delete</button>
+                <button @click="confirmDelete(material.id)" class="bg-red-400 text-white rounded-md">Delete</button>
               </td>
             </tr>
           </table>
           <div class="flex justify-end mt-4">
             <button @click="currentPage -= 1" :disabled="currentPage === 1">Previous</button>
             <span class="mx-2">{{ currentPage }}</span>
-            <button @click="currentPage += 1" :disabled="currentPage * itemsPerPage >= CarStore.cars.length">Next</button>
+            <button @click="currentPage += 1" :disabled="currentPage * itemsPerPage >= MaterialStore.materials.length">Next</button>
           </div>
 
         </div>
@@ -77,13 +77,13 @@
   </section>
 </template>
 <script>
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialStore } from "../../../stores/material.store";
 import { useRoute } from "vue-router";
 
 export default {
   data() {
     return {
-      CarStore: useCarStore(),
+      MaterialStore: useMaterialStore(),
       status: null,
       currentPage: 1,
       itemsPerPage: 5,
@@ -93,41 +93,42 @@ export default {
   methods: {
     confirmDelete(id) {
       if (window.confirm("Apakah anda yakin ingin menghapus ini?")) {
-        this.deleteCar(id);
+        this.deleteMaterial(id);
       }
     },
-    deleteCar(id) {
-      this.CarStore.delete(id)
+    deleteMaterial(id) {
+      this.MaterialStore.delete(id)
         .then(() => {
-          this.CarStore.fetch();
+          this.MaterialStore.fetch();
         });
     },
   },
   beforeRouteEnter(to, from, next) {
-    const CarStore = useCarStore();
+    const MaterialStore = useMaterialStore();
 
-    CarStore.fetch().then(() => {
+    MaterialStore.fetch().then(() => {
       next(vm => {
-        vm.CarStore = CarStore;
+        vm.MaterialStore = MaterialStore;
       });
     });
   },
   computed: {
-    filteredCars() {
+    filteredMaterials() {
       const searchQuery = this.searchQuery.toLowerCase();
-      return this.CarStore.cars.filter(car => {
+      return this.MaterialStore.materials.filter(material => {
         return (
-          car.name.toLowerCase().includes(searchQuery) ||
-          car.license.toLowerCase().includes(searchQuery)
+          material.name.toLowerCase().includes(searchQuery) ||
+          material.license.toLowerCase().includes(searchQuery)
         );
       });
     },
-    paginatedCars() {
+    paginatedMaterials() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.filteredCars.slice(startIndex, endIndex);
+      return this.filteredMaterials.slice(startIndex, endIndex);
     },
   },
 };
 </script>
 
+../../../stores/material.store

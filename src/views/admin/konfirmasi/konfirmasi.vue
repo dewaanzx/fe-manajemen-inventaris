@@ -130,21 +130,21 @@
               <p class="font-semibold md:text-[14px]">
                 <a
                   :class="
-                    carTransactionStore.car_transactions.status == 'Diterima'
+                    materialTransactionStore.material_transactions.status == 'Diterima'
                       ? 'text-green-600'
-                      : carTransactionStore.car_transactions.status == 'Ditolak'
+                      : materialTransactionStore.material_transactions.status == 'Ditolak'
                       ? 'text-red-600'
-                      : carTransactionStore.car_transactions.status == 'Dicek'
+                      : materialTransactionStore.material_transactions.status == 'Dicek'
                       ? 'text-gray-600'
-                      : carTransactionStore.car_transactions.status == 'Selesai'
+                      : materialTransactionStore.material_transactions.status == 'Selesai'
                       ? 'text-gray-600'
-                      : carTransactionStore.car_transactions.status ==
+                      : materialTransactionStore.material_transactions.status ==
                         'Digunakan'
                       ? 'text-orange-400'
                       : ''
                   "
                 >
-                  {{ carTransactionStore.car_transactions.status }}</a
+                  {{ materialTransactionStore.material_transactions.status }}</a
                 >
               </p>
             </div>
@@ -174,11 +174,11 @@
             <div class="flex flex-col text-[12px] gap-1">
               <label for="" class="text-[14px] md:text-[16px]">Mobil</label>
               <select
-                v-model="formData.car_id"
+                v-model="formData.material_id"
                 class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
               >
                 <option value="">-</option>
-                <option v-for="car in carStore.cars" :value="car.id">{{ car.name }}</option>
+                <option v-for="material in materialStore.materials" :value="material.id">{{ material.name }}</option>
               </select>
             </div>  
             <div class="flex flex-col text-[12px] gap-1" v-if="formData.driver == 1">
@@ -223,16 +223,16 @@
   </form>
 </template>
 <script>
-import { useCarTransactionStore } from "../../../stores/car_transaction.store";
+import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useRoute } from "vue-router";
-import { useCarStore } from "../../../stores/car.store";
+import { useMaterialStore } from "../../../stores/material.store";
 import { useDriverStore } from "../../../stores/driver.store";
 
 export default {
   data() {
     return {
-      carTransactionStore: useCarTransactionStore(),
-      carStore: useCarStore(),
+      materialTransactionStore: useMaterialTransactionStore(),
+      materialStore: useMaterialStore(),
       driverStore: useDriverStore(),
       formData: {
         date: null,
@@ -243,7 +243,7 @@ export default {
         passanger_description: null,
         driver: null,
         status: null,
-        car_id: null,
+        material_id: null,
         driver_id: null,
         confirmation_note: null,
       },
@@ -261,43 +261,44 @@ export default {
     },
     async update() {
       const driver = this.formData.driver_id;
-      const car = this.formData.car_id;
+      const material = this.formData.material_id;
       if (driver == "" || !driver){
         delete this.formData.driver_id;
       }
-      if (car == ""){
-        delete this.formData.car_id;
+      if (material == ""){
+        delete this.formData.material_id;
       }
 
       const id = this.$route.params.id;
-      let car_transaction = await this.carTransactionStore.update(id, this.formData);
+      let material_transaction = await this.materialTransactionStore.update(id, this.formData);
 
-      if (car_transaction) {
+      if (material_transaction) {
         this.$router.push("/admin/konfirmasi");
       }
     },
   },
   mounted() {
     const id = this.$route.params.id;
-    this.carTransactionStore.show(id).then(() => {
-      const car_transaction = this.carTransactionStore.car_transactions;
+    this.materialTransactionStore.show(id).then(() => {
+      const material_transaction = this.materialTransactionStore.material_transactions;
 
-      this.formData.date = car_transaction.date_start;
-      this.formData.time = car_transaction.time_start;
-      this.formData.destination = car_transaction.destination;
-      this.formData.description = car_transaction.description;
-      this.formData.passanger = car_transaction.passanger;
-      this.formData.passanger_description = car_transaction.passanger_description;
-      this.formData.driver = car_transaction.driver;
-      this.formData.status = car_transaction.status;
-      this.formData.car_id = car_transaction.car_id;
-      this.formData.driver_id = car_transaction.driver_id;
-      this.formData.confirmation_note = car_transaction.confirmation_note;
+      this.formData.date = material_transaction.date_start;
+      this.formData.time = material_transaction.time_start;
+      this.formData.destination = material_transaction.destination;
+      this.formData.description = material_transaction.description;
+      this.formData.passanger = material_transaction.passanger;
+      this.formData.passanger_description = material_transaction.passanger_description;
+      this.formData.driver = material_transaction.driver;
+      this.formData.status = material_transaction.status;
+      this.formData.material_id = material_transaction.material_id;
+      this.formData.driver_id = material_transaction.driver_id;
+      this.formData.confirmation_note = material_transaction.confirmation_note;
     });
 
-    this.carStore.fetch();
+    this.materialStore.fetch();
     this.driverStore.fetch();
   },
 };
 </script>
 
+../../../stores/material_transaction.store../../../stores/material.store
