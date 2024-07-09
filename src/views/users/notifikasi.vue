@@ -44,7 +44,7 @@
         <RouterLink
           v-if="notification.type == `Material`"
           :to="
-            '/users/riwayat-pinjam-mobil-detail/' + notification.transaction_id
+            '/users/riwayat-pinjam-material-detail/' + notification.transaction_id
           "
         >
           <div

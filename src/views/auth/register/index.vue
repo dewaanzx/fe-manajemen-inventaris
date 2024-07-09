@@ -54,11 +54,7 @@
 					<i class="fa fa-key"></i> Divisi
 				  </label>
 				  <select v-model="formData.division" id="divisi" class="p-2 rounded-lg border border-gray-300 w-full">
-					<option value="">Varx</option>
-					<option value="divisi">RnD</option>
-					<option value="internship">Internship</option>
-					<option value="finance">Finance</option>
-					<option value="business">Business</option>
+					<option v-for="division in divisionStore.divisions" value="division.name">{{ division.name }}</option>
 				  </select>
 				</div>
 				
@@ -110,10 +106,12 @@
   
   <script>
   import { useAuthStore } from "@/stores/auth.store.js";
+  import { useDivisionStore } from "../../../stores/division.store";
   
   export default {
 	data() {
 	  return {
+		divisionStore: useDivisionStore(),
 		authStore: useAuthStore(),
 		formData: {
 		  name: null,
@@ -128,6 +126,14 @@
 	  async register() {
 		await this.authStore.register(this.formData);
 	  },
+	},
+	beforeRouteEnter(to, from, next) {
+	  const DivisionStore = useDivisionStore();
+	  DivisionStore.fetch().then(() => {
+		next(vm => {
+		  vm.DivisionStore = DivisionStore;
+		});
+	  });
 	},
   };
   </script>
