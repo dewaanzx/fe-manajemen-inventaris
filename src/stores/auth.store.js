@@ -21,14 +21,14 @@ export const useAuthStore = defineStore({
 
         localStorage.setItem("user", JSON.stringify(user.data));
 
-        if (user.data.role == "User"){
+        if (user.data.role == "User") {
           router.push("/users");
-        }else if (user.data.role == "SPV Cars"){
-          router.push("/spv-mobil")
-        }else if (user.data.role == "Admin"){
-          router.push("/admin/menu/Semua")
-        }else if (user.data.role == "Satpam"){
-          router.push("/satpam")
+        } else if (user.data.role == "SPV Cars") {
+          router.push("/spv-mobil");
+        } else if (user.data.role == "Admin") {
+          router.push("/admin/menu/Semua");
+        } else if (user.data.role == "Satpam") {
+          router.push("/satpam");
         }
       }
     },
@@ -38,6 +38,15 @@ export const useAuthStore = defineStore({
       if (register) {
         router.push("/login");
       }
+    },
+    async forgotPassword(data) {
+      let response = await axiosWrapper.put(`${baseUrl}/forgot-password`, data, true);
+      return response;
+    },
+    async resetPassword(data, token) {
+		console.log(token);
+      let response = await axiosWrapper.put(`${baseUrl}/reset-password?token=${token}`, data, true);
+      return response;
     },
     async logout() {
       this.user = null;
