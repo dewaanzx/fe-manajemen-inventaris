@@ -37,7 +37,7 @@
             <button @click="toggleOpen">
               <div class="flex justify-center items-center gap-3">
                 <img v-if="user.picture"
-                  :src="'http://api.pinjamin.appmedia.id/uploads/users/' + user.picture"
+                  :src="'http://localhost:8080/uploads/users/' + user.picture"
                   style="object-fit: cover"
                   class="h-[32px] w-[32px] rounded-full"
                   alt=""
@@ -48,22 +48,10 @@
                   class="h-[32px] w-[32px] rounded-full"
                   alt=""
                 />
-                <span class="text-white">{{ user.name }}</span>
+                <span class="text-black font-medium">{{ user.name }}</span>
               </div>
             </button>
           </li>
-          <!-- <li class="flex justify-center items-center">
-            <Button
-              @click="authStore.logout()"
-              class="flex justify-center items-center text-[12px] text-white font-semibold w-[40px] h-[28px] rounded-lg bg-red-500 hover:bg-red-700"
-            >
-              <img
-                src="../assets/keluar.png"
-                class="w-[15px] h-[15px]"
-                alt=""
-              />
-            </Button>
-          </li> -->
         </ul>
       </div>
     </div>

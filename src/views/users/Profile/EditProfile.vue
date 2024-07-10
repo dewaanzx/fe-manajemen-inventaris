@@ -65,73 +65,62 @@
     </nav>
 
     <!-- bagian form edit data -->
-    <div class="flex justify-center items-center min-h-screen">
-  <article class="border border-[#D9D9D9] rounded-lg p-4 md:p-9 w-full max-w-4xl">
+   <div class="flex justify-center items-center min-h-screen">
+  <article class="border border-[#D9D9D9] rounded-lg p-4 md:p-9 w-full max-w-4xl" style="background-color: #25282b; color: #ffffff;">
     <div class="flex flex-col md:flex-row justify-start text-[12px] md:text-[16px] gap-4 md:gap-20">
       <form action="" @submit.prevent="update" class="flex flex-col items-center w-full">
-        <span class="bg-blue-200 w-full text-center mb-4 p-2 rounded-md md:rounded-[16px]">Informasi Akun</span>
+        <span class="bg-blue-400 w-full text-center mb-4 p-2 rounded-md md:rounded-[16px]">Informasi Akun</span>
         <div class="flex flex-wrap md:grid gap-2 md:grid-cols-2 md:gap-4 w-full" v-for="user in userStore.users">
           <div class="flex flex-col">
-            <label for="">Nama</label>
+            <label for="" style="color: #ffffff;">Nama</label>
             <input
               type="text"
               name=""
               id=""
               class="border border-[#D9D9D9] text-[10px] md:text-[14px] rounded-md p-1"
               v-model="formData.name"
+              style="color: #000000;"
             />
           </div>
           <div class="flex flex-col">
-            <label for="">Email</label>
+            <label for="" style="color: #ffffff;">Email</label>
             <input
               type="Email"
               name=""
               id=""
               class="border border-[#D9D9D9] text-[10px] md:text-[14px] rounded-md p-1"
               v-model="formData.email"
+              style="color: #000000;"
             />
           </div>
           <div class="flex flex-col">
-            <label for="">No.Handphone</label>
+            <label for="" style="color: #ffffff;">No.Handphone</label>
             <input
               type="number"
               name=""
               id=""
               class="border border-[#D9D9D9] text-[10px] md:text-[14px] rounded-md p-1"
               v-model="formData.phone"
+              style="color: #000000;"
             />
           </div>
           <div class="flex flex-col">
-            <label for="">Divisi</label>
+            <label for="" style="color: #ffffff;">Divisi</label>
             <select
               name=""
               id=""
               class="border border-[#D9D9D9] text-[10px] md:text-[14px] rounded-md p-1"
               v-model="formData.division"
+              style="color: #000000;"
             >
-              <option :value="formData.division">
-                {{ formData.division }}
-              </option>
-              <option
-                v-for="division in divisionStore.divisions"
-                :value="division.name"
-              >
-                {{ division.name }}
-              </option>
+              <option :value="formData.division">{{ formData.division }}</option>
+              <option v-for="division in divisionStore.divisions" :value="division.name">{{ division.name }}</option>
             </select>
           </div>
           <div class="flex flex-col gap-1">
-            <label for="">Foto</label>
-            <label
-              for="imageinput"
-              class="bg-red-200 w-[7vmax] h-[7vmax] rounded-full"
-            >
-              <img
-                :src="'http://localhost:8080/uploads/users/' + user.picture"
-                alt=""
-                style="object-fit: cover"
-                class="w-[7vmax] h-[7vmax] rounded-full"
-              />
+            <label for="" style="color: #ffffff;">Foto</label>
+            <label for="imageinput" class="bg-red-200 w-[7vmax] h-[7vmax] rounded-full">
+              <img :src="'http://localhost:8080/uploads/users/' + user.picture" alt="" style="object-fit: cover" class="w-[7vmax] h-[7vmax] rounded-full" />
             </label>
             <input
               type="file"
@@ -143,22 +132,14 @@
           </div>
         </div>
         <div class="mt-4 flex gap-4 justify-end w-full">
-          <Button
-            class="bg-red-500 py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700"
-            @click="$router.push('/users/profile')"
-          >
-            Batal
-          </Button>
-          <Button
-            class="bg-[#E26B00] py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-orange-600"
-          >
-            Simpan
-          </Button>
+          <Button class="bg-red-500 py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700" @click="$router.push('/users/profile')">Batal</Button>
+          <Button class="bg-[#E26B00] py-1 px-3 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-orange-600">Simpan</Button>
         </div>
       </form>
     </div>
   </article>
 </div>
+
   </section>
 </template>
 <script>

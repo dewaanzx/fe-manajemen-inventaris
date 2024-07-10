@@ -66,27 +66,27 @@
   
 	  <!-- bagian form edit data -->
 	  <div class="flex justify-center items-center min-h-screen">
-		<article class="border border-[#D9D9D9] rounded-lg md:rounded-[36px] p-4 md:p-9 w-full max-w-2xl">
-  <form action="" @submit.prevent="update" class="flex flex-col items-center">
-    <span class="bg-blue-200 w-full text-center mb-4 p-2 rounded-md md:rounded-[16px]">PT. Telkom Witel Magelang</span>
-    <div class="w-full max-w-md">
-      <div class="text-center mb-6">
-        <p class="text-sm md:text-base leading-relaxed">
-          Telkom berperan sebagai penyedia layanan informasi dan komunikasi serta jaringan telekomunikasi di Indonesia, Telkom Indonesia senantiasa berkomitmen memberikan pelayanan yang terbaik guna membawa perubahan dan perkembangan #UntukIndonesiaLebihBaik.
-        </p>
-      </div>
+      <article class="border border-[#D9D9D9] rounded-lg md:rounded-[36px] p-4 md:p-9 w-full max-w-2xl" style="background-color: #25282b;">
+        <form @submit.prevent="update" class="flex flex-col items-center" style="color: #ffffff;">
+          <span class="bg-blue-400 w-full text-center mb-4 p-2 rounded-md md:rounded-[16px]">PT. Telkom Witel Magelang</span>
+          <div class="w-full max-w-md">
+            <div class="text-center mb-6">
+              <p class="text-sm md:text-base leading-relaxed">
+                Telkom berperan sebagai penyedia layanan informasi dan komunikasi serta jaringan telekomunikasi di Indonesia, Telkom Indonesia senantiasa berkomitmen memberikan pelayanan yang terbaik guna membawa perubahan dan perkembangan #UntukIndonesiaLebihBaik.
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex gap-4 justify-center w-full">
+            <button
+              class="bg-red-500 py-2 px-4 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700"
+              @click="$router.push('/users/profile')"
+            >
+              Kembali
+            </button>
+          </div>
+        </form>
+      </article>
     </div>
-    <div class="mt-6 flex gap-4 justify-center w-full">
-      <button
-        class="bg-red-500 py-2 px-4 text-[11px] md:text-[16px] text-white rounded-lg hover:bg-red-700"
-        @click="$router.push('/users/profile')"
-      >
-        Kembali
-      </button>
-    </div>
-  </form>
-</article>
-  </div>
 	</section>
   </template>
   <script>

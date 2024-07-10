@@ -67,7 +67,7 @@ export default {
           throw new Error("Passwords do not match");
         }
         await this.authStore.resetPassword(this.formData, this.$route.query.token);
-        this.$router.push('/login');
+        this.$router.push('/successchange');
       } catch (error) {
         console.error("Failed to reset password", error);
       }
