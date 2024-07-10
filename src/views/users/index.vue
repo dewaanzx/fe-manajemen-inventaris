@@ -67,12 +67,12 @@
                   style="line-height: 1.2em"
                   >Barang telah diambil</span
                 >
-                <button
+                <RouterLink
                   class="p-1 md:px-4 md:py-2 bg-orange-400 hover:bg-orange-500 text-[10px] md:text-[14px] text-white rounded-[16px]"
-                  @click="$router.push('/users/riwayat-pinjam-material-detail/:id')"
+                  :to="'/users/riwayat-pinjam-material-detail/' + material_transaction.id"
                 >
                   Detail
-                </button>
+                </RouterLink>
               </div>
             </div>
           </swiper-slide>

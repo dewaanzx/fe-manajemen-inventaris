@@ -70,12 +70,12 @@
 				  />
 				</div>
 				<div class="text-left">
-				  <button
+				  <a
 					@click="$router.push('/reset')"
 					class="text-[12px] font-bold text-blue-500 hover:text-blue-700"
 				  >
 					Lupa Password?
-				  </button>
+				  </a>
 				</div>
 				<br />
 				<button

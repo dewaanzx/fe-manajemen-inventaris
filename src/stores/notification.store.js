@@ -15,6 +15,8 @@ export const useNotificationStore = defineStore({
 
       const notifications = await axiosWrapper.get(url);
 
+	  console.log(notifications);
+
       if (notifications) {
         this.notifications = notifications.data;
       }

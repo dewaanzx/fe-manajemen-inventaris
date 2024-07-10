@@ -54,7 +54,7 @@
               class="bg-[#0C6898] rounded-full p-3 flex justify-center items-center"
             >
               <img
-                src="../../assets/car-side.svg"
+                src="../../assets/wire.svg"
                 alt=""
                 class="w-[2vmax] h-[2vmax]"
               />
@@ -103,7 +103,6 @@
   </SECtion>
 </template>
 <script>
-import { RouterLink } from "vue-router";
 import { useNotificationStore } from "../../stores/notification.store";
 
 export default {
@@ -112,10 +111,8 @@ export default {
       notificationStore: useNotificationStore(),
     };
   },
-  methods: {},
   mounted() {
     this.notificationStore.fetch();
   },
-  components: { RouterLink },
 };
 </script>
