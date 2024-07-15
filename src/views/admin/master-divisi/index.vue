@@ -3,7 +3,7 @@
         class="p-4 w-[75%] md:w-[30vh] shadow-sm rounded-[24px] border-2 flex flex-col gap-3"
       >
         <span class="text-[14px]" style="line-height: 1.2em">
-          Permintaan Peminjaman</span
+          Jumlah Pegawai</span
         >
         <div class="flex flex-row justify-between">
           <!-- <P class="text-[34px]"> {{ countTransactionStore.count_transactions.dicek }}</P> -->

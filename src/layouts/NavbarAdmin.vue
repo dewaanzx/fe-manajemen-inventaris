@@ -25,11 +25,6 @@
               href=""
               class="flex justify-center flex-col items-center text-base gap-1 w-11 h-11 bg-[#D3E86A] hover:bg-sky-600 rounded-full"
             >
-              <img
-                src="../assets/bell.svg"
-                class="h-[25px] w-[25px] rounded-full text-2xl"
-                alt=""
-              />
             </button>
           </li>
           <li class="flex justify-center items-center">
@@ -72,20 +67,11 @@
       v-for="user in userStore.users"
     >
       <div class="flex flex-row justify-start items-center gap-3">
-        <img
-          :src="'http://localhost:8080/uploads/users/' + user.picture"
-          style="object-fit: cover"
-          class="h-[30px] w-[30px] rounded-full"
-          alt=""
-        />
         <span class="text-[12px] font-semibold">
           {{ user.name }}
         </span>
       </div>
       <div class="h-[1px] bg-gray-300"></div>
-      <div class="flex justify-start">
-        <button @click="goToProfile" class=" ">Profil</button>
-      </div>
       <div>
         <button class="text-red-700" @click="authStore.logout()">Keluar</button>
       </div>
@@ -369,12 +355,6 @@ export default {
     },
     redirect() {
       console.log("bukan admin")
-    },
-    goToNotification() {
-      // Pindahkan ke halaman profil
-      this.$router.push("/users/notifikasi");
-      // Tutup elemen v-show
-      this.open = false;
     },
   },
   components: { RouterLink },

@@ -22,15 +22,24 @@
 		  <div class="h-[1px] bg-[#D9D9D9]"></div>
 		  <!-- Informasi tujuan apabila dipakai -->
 		  <div class="flex flex-col leading-4 gap-1">
-			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="material.availability == 0">Sedang Digunakan</span>
-			<span class="mt-[-4px] text-[14px] text-gray-800" v-if="material.availability == 1">Tersedia</span>
+			<span class="mt-[-4px] text-[14px] text-gray-800" >Ukuran : {{ material.size }}</span>
+			<span class="mt-[-4px] text-[14px] text-gray-800 mt-1" >Tersedia : {{ material.quantity }}</span>
 		  </div>
 		  <!-- button -->
 		  <button
-			@click="$router.push('/users/cekmaterial/detail/' + material.id)"
+			@click="$router.push('/users/pengajuanmaterial/' + material.id)"
 			class="text-[14px] bg-[#E26B00] text-white rounded-lg py-[6px]"
+			v-if="material.quantity > 0"
 		  >
-			Detail
+			Ambil
+		  </button>
+		  <button
+			@click="$router.push('/users/pengajuanmaterial/' + material.id)"
+			class="text-[14px] bg-[#505050] text-white rounded-lg py-[6px]"
+			v-if="material.quantity == 0"
+			disabled
+		  >
+			Tidak Tersedia
 		  </button>
 		</div>
 	  </article>
@@ -48,8 +57,7 @@
 	},
 	methods: {
 	  getImageUrl(picture) {
-		const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'http://localhost:8080';
-		return `${baseUrl}/${picture}`;
+		return `${picture}`;
 	  },
 	},
 	beforeRouteEnter(to, from, next) {

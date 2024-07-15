@@ -1,24 +1,39 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useMobilStore1 = defineStore("mobil.satu", {
   state: () => ({
+    material_id: "",
     tujuan: "",
     deskripsi: "",
     tanggal: "",
     waktu: "",
     penumpang: "",
     keterangan: "",
+    material_name: "",
   }),
   actions: {
-    addpinjam(data) {
-      // this.tujuan = tujuan.data;
-      // console.log(data);
-      this.tujuan = data.tujuan;
-      this.deskripsi = data.deskripsi;
-      this.tanggal = data.tanggal;
-      this.waktu = data.waktu;
-      this.penumpang = data.penumpang;
-      this.keterangan = data.keterangan;
+    async addpinjam(data) {
+      try {
+        // Assuming baseUrl is defined somewhere accessible
+        const response = await axios.get(`${baseUrl}/material/${data.material_id}`);
+        
+        // Assuming response.data contains the material details including material_name
+        const material = response.data;
+
+        // Update store state
+        this.material_id = material.id;
+        this.tujuan = data.tujuan;
+        this.deskripsi = data.deskripsi;
+        this.tanggal = data.tanggal;
+        this.waktu = data.waktu;
+        this.penumpang = data.penumpang;
+        this.keterangan = data.keterangan;
+        this.material_name = material.name;
+      } catch (error) {
+        console.error("Error fetching material:", error);
+        // Handle error as needed
+      }
     },
 
     pindahKeFormulir2() {

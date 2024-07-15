@@ -1,4 +1,5 @@
 <template>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<div
 	   class="overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden flex items-center justify-center lg:h-screen"
   style="background-color: #25282B;"
@@ -61,13 +62,18 @@
 				  <label for="password" class="font-medium text-[12px] text-white mb-2">
 					<i class="fa fa-key"></i> Password
 				  </label>
-				  <input
-					v-model="formData.password"
-					type="password"
-					id="password"
-					placeholder="Masukkan password anda"
-					class="p-3 rounded-lg border border-gray-300 w-full"
-				  />
+				  <div class="relative">
+					<input
+						v-model="formData.password"
+						:type="showPassword ? 'text' : 'password'"
+						id="password"
+						placeholder="Masukkan password anda"
+						class="p-3 rounded-lg border border-gray-300 w-full"
+					/>
+					<button type="button" class="absolute top-0 right-0 mr-4 mt-3 text-sm text-gray-600 focus:outline-none" @click="togglePasswordVisibility">
+					<i :class="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+					</button>
+				  </div>
 				</div>
 				<div class="text-left">
 				  <a
@@ -117,12 +123,16 @@ export default {
         email: "",
         password: "",
       },
+	  showPassword: false,
     };
   },
   methods: {
     login() {
       this.authStore.login(this.formData);
     },
+	togglePasswordVisibility() {
+	this.showPassword = !this.showPassword;
+	},
   },
 };
 </script>

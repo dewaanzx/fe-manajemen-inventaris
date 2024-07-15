@@ -93,6 +93,15 @@ export const useUser2Store = defineStore({
   actions: {
     async fetch() {
       let url = `${baseUrl}/user`;
+
+      const users2 = await axiosWrapper.get(url);
+
+      if (users2) {
+        this.users2 = users2.data;
+      }
+    },
+    async show(id) {
+      let url = `${baseUrl}/user/${id}`;
       console.log(url)
 
       const users2 = await axiosWrapper.get(url);

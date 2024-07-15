@@ -69,7 +69,7 @@
                 >
                 <RouterLink
                   class="p-1 md:px-4 md:py-2 bg-orange-400 hover:bg-orange-500 text-[10px] md:text-[14px] text-white rounded-[16px]"
-                  :to="'/users/riwayat-pinjam-material-detail/' + material_transaction.id"
+                  :to="'/users/riwayat-ambil-material-detail/' + material_transaction.id"
                 >
                   Detail
                 </RouterLink>
@@ -185,7 +185,7 @@ export default {
     },
   },
   mounted() {
-    this.materialTransactionStore.fetchByStatus("Diterima");
+    this.materialTransactionStore.fetchByStatus("Belum");
     this.roomTransactionStore.fetchByStatus("Diterima");
   },
 };

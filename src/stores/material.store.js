@@ -8,6 +8,7 @@ export const useMaterialStore = defineStore({
   state: () => ({
     materials: [],
     material: null,
+	countMaterial: 0,
   }),
   actions: {
     async fetch() {
@@ -20,6 +21,7 @@ export const useMaterialStore = defineStore({
           ...material,
           picture: this.getFullImageUrl(material.picture),
         }));
+		this.countMaterial = response.count;
       }
     },
     async show(id) {
@@ -30,14 +32,15 @@ export const useMaterialStore = defineStore({
       if (response) {
         this.material = {
           ...response.data,
-          picture: this.getFullImageUrl(response.data.picture),
+          picture: response.data.picture,
         };
       }
     },
     async add(data) {
       const formData = new FormData();
       formData.append("name", data.name);
-      formData.append("license", data.license);
+      formData.append("size", data.size);
+	  formData.append("quantity", data.quantity);
       formData.append("picture", data.picture);
 
       const response = await axiosWrapper.post(
@@ -56,11 +59,6 @@ export const useMaterialStore = defineStore({
           ...response.data,
           picture: this.getFullImageUrl(response.data.picture),
         };
-        // If the response contains the new material in a different structure (like response.data.data), use this instead:
-        // this.material = {
-        //   ...response.data.data,
-        //   picture: this.getFullImageUrl(response.data.data.picture),
-        // };
       }
 
       return response;
@@ -68,7 +66,8 @@ export const useMaterialStore = defineStore({
     async update(id, data) {
       const formData = new FormData();
       formData.append("name", data.name);
-      formData.append("license", data.license);
+      formData.append("size", data.size);
+	  formData.append("quantity", data.quantity);
       formData.append("picture", data.picture);
 
       const response = await axiosWrapper.put(
@@ -100,7 +99,7 @@ export const useMaterialStore = defineStore({
       return await axiosWrapper.delete(`${baseUrl}/material/${id}`, {}, true);
     },
     getFullImageUrl(picture) {
-      return `${baseUrl}/${picture}`;
+      return `${baseUrl}/uploads/materials/${picture}`;
     },
   },
 });

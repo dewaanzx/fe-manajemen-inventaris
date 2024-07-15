@@ -66,69 +66,30 @@
               Semua
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-ambil-material/Dicek'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Belum'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
-              @click="fetchByStatus('Dicek')"
+              @click="fetchByStatus('Belum')"
               :class="
-                $route.params.status == 'Dicek'
+                $route.params.status == 'Belum'
                   ? 'text-[#ffffff] bg-[#2B9FDC]'
                   : ''
               "
             >
-              Dicek
+              Belum
             </button>
           </RouterLink>
-          <RouterLink :to="'/users/riwayat-ambil-material/Ditolak'">
+          <RouterLink :to="'/users/riwayat-ambil-material/Dikonfirmasi'">
             <button
               class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
-              @click="fetchByStatus('Ditolak')"
+              @click="fetchByStatus('Dikonfirmasi')"
               :class="
-                $route.params.status == 'Ditolak'
+                $route.params.status == 'Dikonfirmasi'
                   ? 'text-[#ffffff] bg-[#2B9FDC]'
                   : ''
               "
             >
-              Ditolak
-            </button>
-          </RouterLink>
-          <RouterLink :to="'/users/riwayat-ambil-material/Diterima'">
-            <button
-              class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
-              @click="fetchByStatus('Diterima')"
-              :class="
-                $route.params.status == 'Diterima'
-                  ? 'text-[#ffffff] bg-[#2B9FDC]'
-                  : ''
-              "
-            >
-              Diterima
-            </button>
-          </RouterLink>
-          <RouterLink :to="'/users/riwayat-ambil-material/Digunakan'">
-            <button
-              class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
-              @click="fetchByStatus('Digunakan')"
-              :class="
-                $route.params.status == 'Digunakan'
-                  ? 'text-[#ffffff] bg-[#2B9FDC]'
-                  : ''
-              "
-            >
-              Digunakan
-            </button>
-          </RouterLink>
-          <RouterLink :to="'/users/riwayat-ambil-material/Selesai'">
-            <button
-              class="px-2 py-1 text-[11px] md:text-[14px] md:px-6 md:py-2 border border-[#e5e5e5] rounded-lg md:rounded-[16px]"
-              @click="fetchByStatus('Selesai')"
-              :class="
-                $route.params.status == 'Selesai'
-                  ? 'text-[#ffffff] bg-[#2B9FDC]'
-                  : ''
-              "
-            >
-              Selesai
+              Dikonfirmasi
             </button>
           </RouterLink>
         </div>

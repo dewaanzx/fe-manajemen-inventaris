@@ -34,7 +34,7 @@ export default [
     },
   },
   {
-    path: "/users/pengajuanmaterial",
+    path: "/users/pengajuanmaterial/:id",
     name: "users.pengajuanmaterial",
     component: UsersPengajuanMaterial,
     meta: {
@@ -74,7 +74,7 @@ export default [
     },
   },
   {
-    path: "/users/riwayat-pinjam-material-detail/:id",
+    path: "/users/riwayat-ambil-material-detail/:id",
     name: "users.detail-pinjam-material",
     component: UsersRiwayatAmbilMaterialDetail,
     meta: {

@@ -5,7 +5,7 @@
 	      <div class="">
 	        <div class="grid md:flex md:flex-row md:justify-around gap-2">
 	          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-	            >Informasi Ruangan</span
+	            >Informasi Pegawai</span
 	          >
 	          <div class="grid gap-2 md:w-[80%]">
 	            <div class="flex flex-col text-[12px] gap-1">
@@ -17,46 +17,51 @@
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
-		            {{ roomStore.rooms.name }}
+		            {{ userStore2.users2.name }}
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p
 		            class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
 		          >
-		            Deskripsi
+		            Email
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
-		            {{ roomStore.rooms.description }}
-		          </p>
-	            </div>
-	            <div class="flex flex-col text-[12px] gap-1">
-		          <p
-		            class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
-		          >
-		            Kapasitas
+		            {{ userStore2.users2.email }}
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
-		            {{ roomStore.rooms.capacity }} orang
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
 		          <p
 		            class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
 		          >
-		            Status
+		            Nomor Telepon
 		          </p>
 	            </div>
 	            <div class="flex flex-col text-[12px] gap-1">
-		          <p class="text-[12px] md:text-[14px] text-center md:text-left" v-if="roomStore.rooms.availability == 1">
-		            Tersedia
+		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
+		            {{ userStore2.users2.phone }}
 		          </p>
-		          <p class="text-[12px] md:text-[14px] text-center md:text-left" v-if="roomStore.rooms.availability == 0">
-		            Sedang Digunakan
+	            </div>
+	            <div class="flex flex-col text-[12px] gap-1">
+		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
+		          </p>
+	            </div>
+	            <div class="flex flex-col text-[12px] gap-1">
+		          <p
+		            class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
+		          >
+		            Divisi
+		          </p>
+	            </div>
+	            <div class="flex flex-col text-[12px] gap-1">
+		          <p class="text-[12px] md:text-[14px] text-center md:text-left">
+		            {{ userStore2.users2.division }}
 		          </p>
 	            </div>
 	          <div>
@@ -64,11 +69,11 @@
 		          <p
 		            class="text-[14px] md:text-[16px] text-center md:text-left font-medium"
 		          >
-		            Foto Ruangan
+		            Foto Profile
 		          </p>
 	            </div>
 		        <img
-		          :src="'http://api.pinjamin.appmedia.id/uploads/rooms/' + roomStore.rooms.picture"
+		          :src="'http://localhost:8080/uploads/users/' + userStore2.users2.picture"
 		          class="w-full rounded-md md:rounded-[20px] md:rounded-[24px] hover:bg-slate-100"
 		          style="object-fit: cover"
 		          alt=""
@@ -79,19 +84,25 @@
 	      </div>
       </form>
   </section>
-</template>
-<script>
-import { useRoomStore } from "../../../stores/room.store";
+</template><script>
+import { useUser2Store } from "../../../stores/user.store";
+import { useRoute } from "vue-router";
 
 export default {
   data() {
     return {
-      roomStore: useRoomStore(),
+      userStore2: useUser2Store(),
     };
   },
-  mounted() {
-    const id = this.$route.params.id;
-    this.roomStore.show(id);
+  beforeRouteEnter(to, from, next) {
+    const userStore2 = useUser2Store();
+    const { id } = to.params;
+
+    userStore2.show(id).then(() => {
+      next(vm => {
+        vm.userStore2 = userStore2;
+      });
+    });
   },
 };
 </script>

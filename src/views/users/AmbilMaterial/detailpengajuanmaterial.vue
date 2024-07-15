@@ -177,30 +177,6 @@
           </div>
         </div>
       </div> -->
-      <!-- penumpang & driver -->
-      <div class="">
-        <div class="grid md:flex md:flex-row md:justify-start gap-2">
-          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-            >Panumpang & Sopir</span
-          >
-          <div class="grid grid-rows-2 gap-2 w-[100%] md:w-[80%]">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="md:text-[16px]">Penumpang</label>
-                <p>{{ mobilStore.penumpang }}</p>
-              </div>
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="md:text-[16px]">Sopir</label>
-                <p>{{ mobilStore.sopir }}</p>
-              </div>
-            </div>
-            <div class="text-[12px] gap-1">
-              <label for="" class="md:text-[16px]">Deskripsi</label>
-              <p>{{ mobilStore.keterangan }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- rectangle -->
       <div class="h-[1px] bg-[#D9D9D9]"></div>
       <!-- button submit -->
@@ -224,18 +200,19 @@
   </div>
 
 </template>
-
 <script>
 import { useMobilStore1 } from "@/stores/stores";
 import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
+import { useMaterialStore } from "../../../stores/material.store";
 
 export default {
   data() {
-    // const mobilStore = useMobilStore1();
     return {
       mobilStore: useMobilStore1(),
+      materialStore: useMaterialStore(),
       materialTransactionStore: useMaterialTransactionStore(),
       formData: {
+        material_id: null, // Make sure this is initialized properly
         date: null,
         time: null,
         destination: null,
@@ -248,6 +225,8 @@ export default {
   },
   methods: {
     async create() {
+      // Assigning values from mobilStore to formData
+      this.formData.material_id = parseInt(this.mobilStore.material_id); // Convert to integer
       this.formData.destination = this.mobilStore.tujuan;
       this.formData.description = this.mobilStore.deskripsi;
       this.formData.date = this.mobilStore.tanggal;
@@ -256,13 +235,19 @@ export default {
       this.formData.driver = this.mobilStore.sopir;
       this.formData.passanger_description = this.mobilStore.keterangan;
 
-      let material_transaction = await this.materialTransactionStore.add(this.formData);
+      try {
+        let material_transaction = await this.materialTransactionStore.add(this.formData);
 
-      if (material_transaction) {
-        this.$router.push("/users");
+        if (material_transaction) {
+          this.$router.push("/users");
+        }
+      } catch (error) {
+        console.error("Error creating material transaction:", error);
+        // Handle error appropriately (e.g., show user a message)
       }
     },
   },
 };
 </script>
+
 ../../../stores/material_transaction.store

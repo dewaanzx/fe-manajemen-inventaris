@@ -1,4 +1,5 @@
 <template>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<div  class="overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden flex items-center justify-center lg:h-screen"
 	style="background-color: #25282B;">
 	  <div class="login-container container w-full lg:w-full h-screen lg:h-screen-75 flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group" style="background-color: #25282B;">
@@ -43,7 +44,7 @@
 				
 				<div class="flex flex-col">
 				  <label for="nomor" class="font-medium text-[12px] text-white mb-0">
-					<i class="fa fa-key"></i> Nomor
+					Nomor
 				  </label>
 				  <input v-model="formData.phone" type="number" id="nomor" placeholder="Masukkan nomor anda"
 					class="p-2 rounded-lg border border-gray-300 w-full" />
@@ -51,7 +52,7 @@
 				
 				<div class="flex flex-col">
 				  <label for="divisi" class="font-medium text-[12px] text-white mb-0">
-					<i class="fa fa-key"></i> Divisi
+					Divisi
 				  </label>
 				  <select v-model="formData.division" id="divisi" class="p-2 rounded-lg border border-gray-300 w-full">
 					<option v-for="division in divisionStore.divisions" value="division.name">{{ division.name }}</option>
@@ -62,9 +63,18 @@
 				  <label for="password" class="font-medium text-[12px] text-white mb-0">
 					<i class="fa fa-key"></i> Password
 				  </label>
-				  <input v-model="formData.password" type="password" id="password"
-					placeholder="Masukkan password anda"
-					class="p-2 rounded-lg border border-gray-300 w-full" />
+				  <div class="relative">
+					<input
+						v-model="formData.password"
+						:type="showPassword ? 'text' : 'password'"
+						id="password"
+						placeholder="Masukkan password anda"
+						class="p-3 rounded-lg border border-gray-300 w-full"
+					/>
+					<button type="button" class="absolute top-0 right-0 mr-4 mt-3 text-sm text-gray-600 focus:outline-none" @click="togglePasswordVisibility">
+					<i :class="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+					</button>
+				  </div>
 				</div>
 				
 				<button :type="'submit'"
@@ -120,11 +130,15 @@
 		  phone: null,
 		  divisi: null,
 		},
-	  };
+	    showPassword: false,
+	};
 	},
 	methods: {
 	  async register() {
 		await this.authStore.register(this.formData);
+	  },
+	  togglePasswordVisibility() {
+		this.showPassword = !this.showPassword;
 	  },
 	},
 	beforeRouteEnter(to, from, next) {

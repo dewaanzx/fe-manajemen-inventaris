@@ -156,67 +156,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="">
-        <div class="grid md:flex md:flex-row md:justify-start gap-2">
-          <span class="text-[14px] md:text-[16px] md:w-[20%]"
-            >Tanggal & Jam</span
-          >
-
-          <div class="grid grid-cols-2 gap-2">
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="md:text-[16px]">Tanggal</label>
-              
-            </div>
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="md:text-[16px]">Jam</label>
-              
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- penumpang & driver -->
-      <div class="">
-        <div class="grid md:flex md:flex-row md:justify-start gap-2">
-          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-            >Panumpang & Sopir</span
-          >
-          <div class="grid grid-rows-2 gap-2 w-[100%] md:w-[80%]">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="md:text-[16px]">Penumpang</label>
-                <input
-                  v-model="mobilStore.penumpang"
-                  class="rounded-lg w-full md:w-[30%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                  type="number"
-                  required
-                />
-              </div>
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="md:text-[16px]">Sopir</label>
-                <select
-                  required
-                  v-model="mobilStore.sopir"
-                  class="rounded-lg w-full md:w-[30%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                >
-                  <option value="1">Pakai</option>
-                  <option value="0">Tidak Pakai</option>
-                </select>
-              </div>
-            </div>
-            <div class="text-[12px] gap-1">
-              <label for="" class="md:text-[16px]">Deskripsi</label>
-              <textarea
-                v-model="mobilStore.keterangan"
-                class="rounded-lg w-[100%] h-[7vmax] p-3 border border-[#D9D9D9]"
-                required
-                cols="30"
-                rows="10"
-                placeholder="Masukan catatan anda terkait penumpang dan sopir"
-              ></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- rectangle -->
       <div class="h-[1px] bg-[#D9D9D9]"></div>
       <!-- button submit -->
@@ -240,11 +179,13 @@
 </template>
 <script>
 import { useMobilStore1 } from "../../../stores/stores";
+import { useRoute } from "vue-router";
 
 export default {
   data() {
     return {
       mobilStore: useMobilStore1(),
+	  material_id: "",
       tujuan: "",
       deskripsi: "",
       tanggal: "",
@@ -262,6 +203,8 @@ export default {
       //   tujuan: this.tujuan,
       //   deskripsi: this.deskripsi,
       // });
+
+	  this.mobilStore.material_id =  this.$route.params.id;
 
       this.$router.push("/users/detail-pengajuan-material");
     },

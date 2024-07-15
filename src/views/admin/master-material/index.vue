@@ -3,13 +3,11 @@
         class="p-4 w-[75%] md:w-[30vh] shadow-sm rounded-[24px] border-2 flex flex-col gap-3"
       >
         <span class="text-[14px]" style="line-height: 1.2em">
-          Permintaan Peminjaman</span
+          Jumlah Barang</span
         >
         <div class="flex flex-row justify-between">
-          <!-- <P class="text-[34px]"> {{ countTransactionStore.count_transactions.dicek }}</P> -->
-          <div class="bg-[#C1E9FF] p-4 rounded-full">
-            <img src="../../../assets/pinjaman.svg " class="" alt="" />
-          </div>
+          <P class="text-[34px]"> {{ MaterialStore.countMaterial.countMaterial }}
+			</P>
         </div>
       </div>
   <section>
@@ -21,7 +19,7 @@
             type="text"
             name=""
             class="border px-3 inline-block rounded-[12px] text-[12px] md:text-[16px] h-[40px]"
-            placeholder="Material Barang"
+            placeholder="Cari Material"
             id=""
           />
         </div>
@@ -35,7 +33,7 @@
             src="../../../assets/plus.svg"
             alt=""
           />
-          Tambah Barang
+          Tambah Material
         </button>
       </div>
     </article>
@@ -44,14 +42,15 @@
         <div class="w-full overflow-auto touch-auto ...">
           <table class="w-full my-3">
             <tr class="text-[14px] md:text-[16px] font-semibold border-b px-3">
-              <th class="font-medium text-left py-4 pr-4 pl-2">Nama Barang</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Nama Material</th>
               <th class="font-medium text-left py-4 pr-4 pl-2">Ukuran</th>
-              <th class="font-medium text-left py-4 pr-4 pl-2">Status</th>
+              <th class="font-medium text-left py-4 pr-4 pl-2">Stok</th>	
               <th class="font-medium text-left py-4 pr-4 pl-2">Aksi</th>
             </tr>
             <tr v-for="material in paginatedMaterials" class="text-[12px] md:text-[14px] border-b">
               <td class="pr-4 pl-2 md:py-4">{{ material.name }}</td>
-              <td class="pr-4 pl-2 md:py-4">{{ material.license }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material.size }}</td>
+              <td class="pr-4 pl-2 md:py-4">{{ material.quantity }}</td>
               <td class="pr-4 pl-2 md:py-4" v-if="material.availability == 1">Tersedia</td>
               <td class="pr-4 pl-2 md:py-4" v-if="material.availability == 0">Sedang Digunakan</td>
               <td
@@ -118,7 +117,7 @@ export default {
       return this.MaterialStore.materials.filter(material => {
         return (
           material.name.toLowerCase().includes(searchQuery) ||
-          material.license.toLowerCase().includes(searchQuery)
+          material.size.toLowerCase().includes(searchQuery)
         );
       });
     },

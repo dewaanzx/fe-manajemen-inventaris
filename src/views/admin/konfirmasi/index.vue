@@ -18,6 +18,15 @@
               class="w-[2.3333vmax] h-[2.3333vmax] md:w-[28px] md:h-[28px]"
               alt=""
             />
+            {{ material_transaction.material_name }}
+          </Span>
+          <Span class="flex flex-row items-center text-[14px] md:text-[18px] gap-1"
+          >
+            <img
+              src="../../../assets/calender.png "
+              class="w-[2.3333vmax] h-[2.3333vmax] md:w-[28px] md:h-[28px]"
+              alt=""
+            />
             {{ material_transaction.date_start }}
           </Span>
           <Span
@@ -35,7 +44,7 @@
           <button
             class="w-[15.5vmin] md:px-5 md:py-[6px] bg-[#E5E5E5] text-[11px] md:text-[14px] rounded-[24px]"
           >
-            Dicek
+            Belum
           </button>
         </div>
       </div>
@@ -70,7 +79,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     const materialTransactionStore = useMaterialTransactionStore();
 
-    materialTransactionStore.fetchByStatus("Dicek").then(() => {
+    materialTransactionStore.fetchByStatus("Belum").then(() => {
       next(vm => {
         vm.status = status;
         vm.materialTransactionStore = materialTransactionStore;

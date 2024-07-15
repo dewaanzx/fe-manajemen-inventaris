@@ -51,7 +51,7 @@
         <div class="grid gap-2 md:w-[80%]">
           <div class="flex flex-col text-[12px] gap-1">
             <label for="" class="text-[14px] md:text-[16px]">Nama</label>
-            <span class="text-[12px] md:text-[14px]">{{ materialTransactionStore.material_transactions.borrower }}</span>
+            <span class="text-[12px] md:text-[14px]">{{ materialTransactionStore.material_transactions.user_name }}</span>
           </div>
         </div>
       </div>
@@ -113,57 +113,27 @@
           </div>
         </div>
       </div>
-
-      <!-- penumpang & driver -->
-      <div class="">
-        <div class="grid md:flex md:flex-row md:justify-start gap-2">
-          <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-            >Panumpang & Sopir</span
-          >
-          <div class="flex flex-col gap-2 w-[100%] md:w-[80%]">
-            <div class="grid grid-cols-2 gap-2">
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="text-[14px] md:text-[16px]"
-                  >Penumpang</label
-                >
-                <input
-                  class="rounded-lg w-full text-[14px] md:text-[16px] md:w-[50%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                  type="number"
-                  required
-                  min="1"
-                  placeholder="Masukkan jumlah penumpang"
-                  v-model="formData.passanger"
-                />
-              </div>
-              <div class="flex flex-col text-[12px] gap-1">
-                <label for="" class="text-[14px] md:text-[16px]">Sopir</label>
-                <select
-                  required
-                  class="rounded-lg w-full text-[14px] md:text-[16px] md:w-[50%] h-[3vmax] px-3 border border-[#D9D9D9]"
-                  v-model="formData.driver"
-                >
-                  <option value="1">Pakai</option>
-                  <option value="0">Tidak Pakai</option>
-                </select>
-              </div>
-            </div>
-            <div class="text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Deskripsi</label>
-              <textarea
-                class="rounded-lg w-[100%] h-[7vmax] p-3 text-[14px] md:text-[16px] border border-[#D9D9D9]"
-                required
-                cols="30"
-                rows="10"
-                placeholder="Masukan catatan anda terkait penumpang dan sopir"
-                v-model="formData.passanger_description"
-              ></textarea>
+      <div class="grid md:flex md:flex-row md:justify-start gap-2">
+        <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
+          >Material</span
+        >
+        <div class="grid grid-rows-1 gap-2 w-[100%] md:w-[80%]">
+          <div class="grid grid-cols-3 md:grid-cols-4 gap-5">
+            <div class="flex flex-col text-[12px] gap-1">
+              <label for="" class="text-[14px] md:text-[16px]">Material</label>
+              <select
+                v-model="formData.material_id"
+                class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
+              >
+                <option v-for="material in materialStore.materials" :value="material.id">{{ material.name }}</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
       <div class="grid md:flex md:flex-row md:justify-start gap-2">
         <span class="text-[14px] md:text-[16px] md:w-[20%] text-[#2B9FDC]"
-          >Konfirmasi</span
+          >Status</span
         >
         <div class="grid grid-rows-1 gap-2 w-[100%] md:w-[80%]">
           <div class="grid grid-cols-3 md:grid-cols-4 gap-5">
@@ -174,42 +144,10 @@
                 v-model="formData.status"
                 class="rounded-lg text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
               >
-                <option value="Dicek">Dicek</option>
-                <option value="Diterima">Diterima</option>
-                <option value="Ditolak">Ditolak</option>
+                <option value="Belum">Belum</option>
+                <option value="Dikonfirmasi">Dikonfirmasi</option>
               </select>
             </div>
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Mobil</label>
-              <select
-                v-model="formData.material_id"
-                class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
-              >
-                <option value="">-</option>
-                <option v-for="material in materialStore.materials" :value="material.id">{{ material.name }}</option>
-              </select>
-            </div>  
-            <div class="flex flex-col text-[12px] gap-1">
-              <label for="" class="text-[14px] md:text-[16px]">Sopir</label>
-              <select
-                v-model="formData.driver_id"
-                class="rounded-lg w-full text-[14px] md:text-[16px] h-[3vmax] px-3 border border-[#D9D9D9]"
-              >
-                <option value="">-</option>
-                <option v-for="driver in driverStore.drivers" :value="driver.id">{{ driver.name }}</option>
-              </select>
-            </div>
-          </div>
-          <div class="text-[12px] gap-1">
-            <label for="" class="text-[14px] md:text-[16px]">Deskripsi</label>
-            <textarea
-              class="rounded-lg w-[100%] h-[7vmax] p-3 text-[14px] md:text-[16px] border border-[#D9D9D9]"
-              required
-              cols="30"
-              rows="10"
-              placeholder="Masukan catatan anda terkait penumpang dan sopir"
-              v-model="formData.confirmation_note"
-            ></textarea>
           </div>
         </div>
       </div>
@@ -234,25 +172,19 @@
 import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useRoute } from "vue-router";
 import { useMaterialStore } from "../../../stores/material.store";
-import { useDriverStore } from "../../../stores/driver.store";
 
 export default {
   data() {
     return {
       materialTransactionStore: useMaterialTransactionStore(),
       materialStore: useMaterialStore(),
-      driverStore: useDriverStore(),
       formData: {
         date: null,
         time: null,
         destination: null,
         description: null,
-        passanger: null,
-        passanger_description: null,
-        driver: null,
         status: null,
         material_id: null,
-        driver_id: null,
         confirmation_note: null,
       },
     };
@@ -268,11 +200,7 @@ export default {
       }
     },
     async update() {
-      const driver = this.formData.driver_id;
       const material = this.formData.material_id;
-      if (driver == ""){
-        delete this.formData.driver_id;
-      }
       if (material == ""){
         delete this.formData.material_id;
       }
@@ -296,15 +224,12 @@ export default {
       this.formData.description = material_transaction.description;
       this.formData.passanger = material_transaction.passanger;
       this.formData.passanger_description = material_transaction.passanger_description;
-      this.formData.driver = material_transaction.driver;
       this.formData.status = material_transaction.status;
       this.formData.material_id = material_transaction.material_id;
-      this.formData.driver_id = material_transaction.driver_id;
       this.formData.confirmation_note = material_transaction.confirmation_note;
     });
 
     this.materialStore.fetch();
-    this.driverStore.fetch();
   },
 };
 </script>

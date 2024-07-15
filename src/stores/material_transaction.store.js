@@ -38,37 +38,21 @@ export const useMaterialTransactionStore = defineStore({
       }
     },
     async add(data) {
-      const material_transaction = await axiosWrapper.post(
-        `${baseUrl}/material-transaction`,
-        data,
-        true
-      );
 
-      this.material_transaction = material_transaction.data;
-
-      return material_transaction;
+		console.log(data)
+		console.log("wjdawjd")
+		return await axiosWrapper.post(
+			`${baseUrl}/material-transaction/`,
+			data,
+			true
+		);
     },
     async take(id, data) {
-      const formData = new FormData();
-      formData.append("date", data.date);
-      formData.append("time_taken", data.time_taken);
-      formData.append("picture", data.picture);
-      formData.append("driving_license", data.driving_license);
-
-      const material_transaction = await axiosWrapper.put(
-        `${baseUrl}/material-transaction/take/${id}`,
-        formData,
-        true,
-        {
-          headers: {
-            "Content-Type": "Multipart/form-data",
-          },
-        }
-      );
-
-      this.material_transaction = material_transaction.data;
-
-      return material_transaction;
+		return await axiosWrapper.put(
+			`${baseUrl}/material-transaction/take/${id}`,
+			data,
+			true
+		);
     },
     async update(id, data) {
       return await axiosWrapper.put(
