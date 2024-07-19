@@ -4,9 +4,10 @@
   >
     <span class="text-[14px]" style="line-height: 1.2em">Daftar Pegawai</span>
     <div class="flex flex-row justify-between">
-      <div class="bg-[#C1E9FF] p-4 rounded-full">
-        <img src="../../../assets/pegawai.svg" class="" alt="" />
-      </div>
+        <div class="flex flex-row justify-between">
+          <P class="text-[34px]"> {{ userStore2.countUser.countUsers }}
+			</P>
+        </div>
     </div>
   </div>
   <section>

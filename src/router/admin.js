@@ -18,7 +18,6 @@ import EditMaterial from "../views/admin/master-material/editmaterial.vue";
 
 import MasterPegawai from "../views/admin/master-pegawai/index.vue";
 import DetailPegawai from "../views/admin/master-pegawai/detailpegawai.vue";
-import EditPegawai from "../views/admin/master-pegawai/editpegawai.vue";
 
 import MasterDivisi from "../views/admin/master-divisi/index.vue";
 import TambahDivisi from "../views/admin/master-divisi/tambahdivisi.vue";
@@ -139,16 +138,6 @@ export default [
     path: "/admin/master-pegawai/detail/:id",
     name: "DetailPegawai",
     component: DetailPegawai,
-    meta: {
-      title: "Admin",
-      layout: NavbarAdmin,
-      middleware: [AuthMiddleware],
-    },
-  },
-  {
-    path: "/admin/master-pegawai/edit/:id",
-    name: "EditPegawai",
-    component: EditPegawai,
     meta: {
       title: "Admin",
       layout: NavbarAdmin,

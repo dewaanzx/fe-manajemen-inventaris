@@ -197,12 +197,6 @@ export default {
   },
   methods: {
     addpinjam() {
-      // this.mobilStore.addpinjam(this.tujuan);
-      // this.mobilStore.addpinjam(this.deskripsi);
-      // this.mobilStore.addpinjam({
-      //   tujuan: this.tujuan,
-      //   deskripsi: this.deskripsi,
-      // });
 
 	  this.mobilStore.material_id =  this.$route.params.id;
 

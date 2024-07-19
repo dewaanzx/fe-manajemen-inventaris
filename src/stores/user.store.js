@@ -89,7 +89,8 @@ export const useUser2Store = defineStore({
   state: () => ({
     users2: [],
     user2: null,
-  }),
+	countUser: 0,
+}),
   actions: {
     async fetch() {
       let url = `${baseUrl}/user`;
@@ -98,6 +99,7 @@ export const useUser2Store = defineStore({
 
       if (users2) {
         this.users2 = users2.data;
+		this.countUser = users2.count;
       }
     },
     async show(id) {

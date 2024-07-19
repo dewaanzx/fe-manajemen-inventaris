@@ -19,14 +19,5 @@ export const useCountTransactionStore = defineStore({
         this.count_transactions = count_transactions.data;
       }
     },
-    async room() {
-      let url = `${baseUrl}/count-transaction/room`;
-
-      const count_transactions = await axiosWrapper.get(url);
-
-      if (count_transactions) {
-        this.count_transactions = count_transactions.data;
-      }
-    },
   },
 });

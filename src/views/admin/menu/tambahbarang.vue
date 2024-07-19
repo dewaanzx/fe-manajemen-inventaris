@@ -174,7 +174,6 @@
 <script>
 import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useMaterialStore } from "../../../stores/material.store";
-import { useDriverStore } from "../../../stores/driver.store";
 import { useUser2Store } from "../../../stores/user.store";
 
 export default {
@@ -182,7 +181,6 @@ export default {
     return {
       materialTransactionStore: useMaterialTransactionStore(),
       materialStore: useMaterialStore(),
-      driverStore: useDriverStore(),
       user2Store: useUser2Store(),
       formData: {
         user_id: null,
@@ -192,10 +190,8 @@ export default {
         description: null,
         passanger: null,
         passanger_description: null,
-        driver: null,
         status: null,
         material_id: null,
-        driver_id: null,
         confirmation_note: null,
       },
     };
@@ -211,11 +207,7 @@ export default {
       }
     },
     async create() {
-      const driver = this.formData.driver_id;
       const material = this.formData.material_id;
-      if (driver == ""){
-        delete this.formData.driver_id;
-      }
       if (material == ""){
         delete this.formData.material_id;
       }
@@ -229,7 +221,6 @@ export default {
   },
   mounted() {
     this.materialStore.fetch();
-    this.driverStore.fetch();
     this.user2Store.fetch();
   },
 };

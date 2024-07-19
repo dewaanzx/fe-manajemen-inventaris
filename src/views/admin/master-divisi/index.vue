@@ -6,10 +6,8 @@
           Jumlah Pegawai</span
         >
         <div class="flex flex-row justify-between">
-          <!-- <P class="text-[34px]"> {{ countTransactionStore.count_transactions.dicek }}</P> -->
-          <div class="bg-[#C1E9FF] p-4 rounded-full">
-            <img src="../../../assets/pinjaman.svg " class="" alt="" />
-          </div>
+          <P class="text-[34px]"> {{ DivisionStore.countDivision.countDivision }}
+			</P>
         </div>
       </div>
   <section>

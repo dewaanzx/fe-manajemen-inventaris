@@ -27,7 +27,6 @@ export const useMobilStore1 = defineStore("mobil.satu", {
         this.deskripsi = data.deskripsi;
         this.tanggal = data.tanggal;
         this.waktu = data.waktu;
-        this.penumpang = data.penumpang;
         this.keterangan = data.keterangan;
         this.material_name = material.name;
       } catch (error) {

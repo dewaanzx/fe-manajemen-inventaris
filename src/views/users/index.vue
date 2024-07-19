@@ -152,7 +152,6 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { useMaterialTransactionStore } from "../../stores/material_transaction.store";
-import { useRoomTransactionStore } from "../../stores/room_transaction.store";
 
 export default {
   components: {
@@ -167,7 +166,6 @@ export default {
   data() {
     return {
       materialTransactionStore: useMaterialTransactionStore(),
-      roomTransactionStore: useRoomTransactionStore(),
       formData: {
         date: null,
         time: null,
@@ -186,7 +184,6 @@ export default {
   },
   mounted() {
     this.materialTransactionStore.fetchByStatus("Belum");
-    this.roomTransactionStore.fetchByStatus("Diterima");
   },
 };
 </script>
@@ -204,4 +201,3 @@ export default {
   /* Center slide text vertically */
 }
 </style>
-../../stores/material_transaction.store

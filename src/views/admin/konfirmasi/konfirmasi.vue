@@ -149,14 +149,12 @@
 import { useMaterialTransactionStore } from "../../../stores/material_transaction.store";
 import { useRoute } from "vue-router";
 import { useMaterialStore } from "../../../stores/material.store";
-import { useDriverStore } from "../../../stores/driver.store";
 
 export default {
   data() {
     return {
       materialTransactionStore: useMaterialTransactionStore(),
       materialStore: useMaterialStore(),
-      driverStore: useDriverStore(),
       formData: {
         user_name: null,
         material_name: null,
@@ -166,10 +164,8 @@ export default {
         description: null,
         passanger: null,
         passanger_description: null,
-        driver: null,
         status: null,
         material_id: null,
-        driver_id: null,
         confirmation_note: null,
       },
     };
@@ -185,11 +181,7 @@ export default {
       }
     },
     async update() {
-      const driver = this.formData.driver_id;
       const material = this.formData.material_id;
-      if (driver == "" || !driver){
-        delete this.formData.driver_id;
-      }
       if (material == ""){
         delete this.formData.material_id;
       }
@@ -215,15 +207,12 @@ export default {
       this.formData.description = material_transaction.description;
       this.formData.passanger = material_transaction.passanger;
       this.formData.passanger_description = material_transaction.passanger_description;
-      this.formData.driver = material_transaction.driver;
       this.formData.status = material_transaction.status;
       this.formData.material_id = material_transaction.material_id;
-      this.formData.driver_id = material_transaction.driver_id;
       this.formData.confirmation_note = material_transaction.confirmation_note;
     });
 
     this.materialStore.fetch();
-    this.driverStore.fetch();
   },
 };
 </script>

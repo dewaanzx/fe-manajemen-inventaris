@@ -55,7 +55,7 @@
 					Divisi
 				  </label>
 				  <select v-model="formData.division" id="divisi" class="p-2 rounded-lg border border-gray-300 w-full">
-					<option v-for="division in divisionStore.divisions" value="division.name">{{ division.name }}</option>
+					<option v-for="division in divisionStore.divisions" :value="division.name">{{ division.name }}</option>
 				  </select>
 				</div>
 				

@@ -8,6 +8,7 @@ export const useDivisionStore = defineStore({
   state: () => ({
     divisions: [],
     division: null,
+	countDivision: 0,
   }),
   actions: {
     async fetch() {
@@ -17,6 +18,8 @@ export const useDivisionStore = defineStore({
 
       if (divisions) {
         this.divisions = divisions.data;
+		
+		this.countDivision = divisions.count;
       }
     },
     async show(id) {

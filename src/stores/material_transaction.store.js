@@ -38,9 +38,6 @@ export const useMaterialTransactionStore = defineStore({
       }
     },
     async add(data) {
-
-		console.log(data)
-		console.log("wjdawjd")
 		return await axiosWrapper.post(
 			`${baseUrl}/material-transaction/`,
 			data,
